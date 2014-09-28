@@ -1,0 +1,49 @@
+PODS:
+  - OMGHTTPURLRQ (2.0.1):
+    - OMGHTTPURLRQ/RQ
+    - OMGHTTPURLRQ/UserAgent
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/RQ (2.0.1):
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (2.0.1):
+    - OMGHTTPURLRQ/UserAgent
+  - PromiseKit (0.9.17.1):
+    - PromiseKit/NSNotificationCenter
+    - PromiseKit/NSURLConnection
+    - PromiseKit/Pause
+    - PromiseKit/UIActionSheet
+    - PromiseKit/UIAlertView
+    - PromiseKit/UIView
+    - PromiseKit/UIViewController
+    - PromiseKit/Until
+    - PromiseKit/When
+  - PromiseKit/NSNotificationCenter (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/NSURLConnection (0.9.17.1):
+    - OMGHTTPURLRQ
+    - PromiseKit/Promise
+  - PromiseKit/Pause (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/Promise (0.9.17.1)
+  - PromiseKit/UIActionSheet (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/UIAlertView (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/UIView (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/UIViewController (0.9.17.1):
+    - PromiseKit/Promise
+  - PromiseKit/Until (0.9.17.1):
+    - PromiseKit/Promise
+    - PromiseKit/When
+  - PromiseKit/When (0.9.17.1):
+    - PromiseKit/Promise
+
+DEPENDENCIES:
+  - PromiseKit
+
+SPEC CHECKSUMS:
+  OMGHTTPURLRQ: 4297af2a7f7ca7adb3f8331203001e0fd2dae16f
+  PromiseKit: b59eaaf257f72f1125fdac7bccfcc2ae2e014cc4
+
+COCOAPODS: 0.34.1
