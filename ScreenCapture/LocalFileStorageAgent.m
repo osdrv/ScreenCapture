@@ -10,15 +10,17 @@
 
 @implementation LocalFileStorageAgent
 
-- (PMKPromise *)storeFile:(NSFileHandle *)inputFile {
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFileHandleWithName {
+    
     NSLog(@"Storing file with LocalFile");
+    
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
+        
+        NSFileHandle *inputFile = [inputFileHandleWithName fileHandle];
         
         NSAssert(inputFile != nil, @"Input file handle can not be nil");
         
         NSLog(@"Calling storeFile on LocalFileStorageAgent");
-        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
         
         NSString *destinationFolder = [(NSString *)[self->options valueForKey:@"StorePath"] stringByStandardizingPath];
         
@@ -30,10 +32,9 @@
             NSLog(@"Error creating folder %@", destinationFolder);
         }
         
-        //@TODO: fix .png here
-        NSString *fileName = [[NSString stringWithFormat:@"%@/%@.png",
+        NSString *fileName = [[NSString stringWithFormat:@"%@/%@",
                               destinationFolder,
-                              [dateFormatter stringFromDate:[NSDate date]]
+                              [self generateFilenameYYYYMMDDHHIISS:inputFileHandleWithName]
                               ] stringByStandardizingPath];
         
         NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:fileName];

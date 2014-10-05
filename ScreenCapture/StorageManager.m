@@ -9,6 +9,7 @@
 #import "StorageManager.h"
 #import "StorageAgent.h"
 #import "PromiseQueue.h"
+#import "NSFileHandleWithName.h"
 
 @implementation StorageManager
 
@@ -22,7 +23,7 @@
     return self;
 }
 
-- (PMKPromise *)storeFile:(NSFileHandle *)filePtr {
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)fileHandleWithName {
     NSMutableArray *activeAgents = [[NSMutableArray alloc] init];
     for (id<StorageAgent> agent in self->storageAgents) {
         if (![agent enabled]) continue;
@@ -30,7 +31,7 @@
     }
     NSLog(@"Store file called, %@", activeAgents);
     PromiseQueue *pqueue = [[PromiseQueue alloc] initWithDeferreds:activeAgents];
-    return [pqueue proceed:filePtr];
+    return [pqueue proceed:fileHandleWithName];
 }
 
 - (void)initAgentPoolWithOptions:(NSDictionary *)options {

@@ -17,4 +17,6 @@
     BOOL succeeded;
 }
 
+- (NSString *)generateFilenameYYYYMMDDHHIISS:(NSFileHandleWithName *)file;
+
 @end

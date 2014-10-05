@@ -33,7 +33,7 @@
     return YES;
 }
 
-- (PMKPromise *)storeFile:(NSFileHandle *)inputFile {
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFile {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                  userInfo:nil];
@@ -41,6 +41,14 @@
 
 - (PMKPromise *)proceed:(id)arg {
     return [self storeFile:arg];
+}
+
+- (NSString *)generateFilenameYYYYMMDDHHIISS:(NSFileHandleWithName *)file {
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+    //@TODO: fix .png here
+    NSString *fileName = [NSString stringWithFormat:@"%@.png", [dateFormatter stringFromDate:[NSDate date]]];
+    return fileName;
 }
 
 @end

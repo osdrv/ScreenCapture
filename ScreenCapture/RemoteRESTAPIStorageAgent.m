@@ -7,13 +7,15 @@
 //
 
 #import "RemoteRESTAPIStorageAgent.h"
-//#import <ASIHTTPRequest.h>
 #import <ASIHTTPRequest/ASIFormDataRequest.h>
 
 @implementation RemoteRESTAPIStorageAgent
 
-- (PMKPromise *)storeFile:(NSFileHandle *)inputFile {
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFileHandleWithName {
+    
     NSLog(@"Storing file with RemoteRESTAPI");
+    
+    NSFileHandle *inputFile = [inputFileHandleWithName fileHandle];
     
     NSAssert(inputFile != nil, @"The input file is nil");
     NSString *scheme = [self->options valueForKey:@"Scheme"];
@@ -30,7 +32,7 @@
         [inputFile seekToFileOffset:0];
         NSData *fileContents = [inputFile readDataToEndOfFile];
         
-        [request setData:fileContents withFileName:@"screenshot.png" andContentType:@"image/png" forKey:[self->options valueForKey:@"FileParamName"]];
+        [request setData:fileContents withFileName:[self generateFilenameYYYYMMDDHHIISS:inputFileHandleWithName] andContentType:@"image/png" forKey:[self->options valueForKey:@"FileParamName"]];
         
         [request setCompletionBlock:^{
             

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <PromiseKit.h>
 #import "Processable.h"
+#import "NSFileHandleWithName.h"
 
 @protocol StorageAgent <NSObject, Processable>
 
@@ -20,8 +21,8 @@
 
 - (id)initAgentWithOptions:(NSDictionary *)options;
 
-- (BOOL)canStoreFile:(NSFileHandle *)file;
+- (BOOL)canStoreFile:(NSFileHandleWithName *)file;
 
-- (PMKPromise *)storeFile:(NSFileHandle *)file;
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)file;
 
 @end

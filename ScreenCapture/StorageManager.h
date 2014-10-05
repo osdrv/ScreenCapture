@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <PromiseKit.h>
+#import "NSFileHandleWithName.h"
 
 @interface StorageManager : NSObject {
     NSMutableArray *storageAgents;
@@ -15,6 +16,6 @@
 
 - (id)initWithOptions:(NSDictionary *)options;
 
-- (PMKPromise *)storeFile:(NSFileHandle *)filePtr;
+- (PMKPromise *)storeFile:(NSFileHandleWithName *)filePtr;
 
 @end

@@ -26,6 +26,25 @@
 			<key>Enabled</key>
 			<true/>
 		</dict>
+		<key>SFTPStorageAgent</key>
+		<dict>
+			<key>WebScheme</key>
+			<string>http</string>
+			<key>WebPath</key>
+			<string></string>
+			<key>WebHost</key>
+			<string></string>
+			<key>StoragePath</key>
+			<string></string>
+			<key>Password</key>
+			<string></string>
+			<key>Enabled</key>
+			<true/>
+			<key>Host</key>
+			<string></string>
+			<key>User</key>
+			<string></string>
+		</dict>
 	</dict>
 </dict>
 </plist>

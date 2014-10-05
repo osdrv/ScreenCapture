@@ -12,6 +12,7 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - NMSSH (2.2.0)
   - OMGHTTPURLRQ (2.0.1):
     - OMGHTTPURLRQ/RQ
     - OMGHTTPURLRQ/UserAgent
@@ -56,11 +57,13 @@ PODS:
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - NMSSH
   - PromiseKit
   - PromiseKit/NSTask
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
+  NMSSH: 6075839f1d4415ce55bf5db62fa1178888e12ae5
   OMGHTTPURLRQ: 4297af2a7f7ca7adb3f8331203001e0fd2dae16f
   PromiseKit: b59eaaf257f72f1125fdac7bccfcc2ae2e014cc4
 
