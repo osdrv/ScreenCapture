@@ -8,35 +8,10 @@
 
 #import "LocalFileStorageAgent.h"
 
-@implementation LocalFileStorageAgent {
-    BOOL enabled;
-}
-
-- (BOOL) enabled {
-    return self->enabled;
-}
-
-- (void)setEnabled:(BOOL)enabled_ {
-    self->enabled = enabled_;
-}
-
-- (id)initAgentWithOptions:(NSDictionary *)options_ {
-    
-    if (self = [super init]) {
-        self->options = options_;
-        [self setEnabled:(BOOL)[options_ valueForKey:@"Enabled"]];
-        NSLog(@"%@", self->options);
-    }
-    
-    return self;
-}
-
-- (BOOL)canStoreFile:(NSFileHandle *)file {
-    return YES;
-}
+@implementation LocalFileStorageAgent
 
 - (PMKPromise *)storeFile:(NSFileHandle *)inputFile {
-    NSLog(@"Current settings: %@", self->options);
+    NSLog(@"Storing file with LocalFile");
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
         
         NSAssert(inputFile != nil, @"Input file handle can not be nil");
@@ -55,6 +30,7 @@
             NSLog(@"Error creating folder %@", destinationFolder);
         }
         
+        //@TODO: fix .png here
         NSString *fileName = [[NSString stringWithFormat:@"%@/%@.png",
                               destinationFolder,
                               [dateFormatter stringFromDate:[NSDate date]]
@@ -83,20 +59,20 @@
                 [outputFile writeData:buffer];
             }
             NSLog(@"Done copying the file");
+            self->result = fileName;
+            self->succeeded = YES;
         }
         @catch (NSException *exception) {
+            self->result = NULL;
+            self->succeeded = NO;
             @throw;
         }
         @finally {
             [inputFile seekToFileOffset:0];
             [outputFile closeFile];
-            fulfill(NULL);
+            fulfill(self->result);
         }
     }];
-}
-
-- (PMKPromise *)proceed:(id)arg {
-    return [self storeFile:arg];
 }
 
 @end

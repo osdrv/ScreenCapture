@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "StorageAgent.h"
+#import "GenericStorageAgent.h"
 
-@interface LocalFileStorageAgent : NSObject <StorageAgent> {
-    @protected
-    NSDictionary *options;
-}
+@interface LocalFileStorageAgent : GenericStorageAgent
 
 @end

@@ -1,4 +1,17 @@
 PODS:
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest
+    - ASIHTTPRequest/CloudFiles
+    - ASIHTTPRequest/Core
+    - ASIHTTPRequest/S3
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
   - OMGHTTPURLRQ (2.0.1):
     - OMGHTTPURLRQ/RQ
     - OMGHTTPURLRQ/UserAgent
@@ -42,10 +55,12 @@ PODS:
     - PromiseKit/Promise
 
 DEPENDENCIES:
+  - ASIHTTPRequest
   - PromiseKit
   - PromiseKit/NSTask
 
 SPEC CHECKSUMS:
+  ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
   OMGHTTPURLRQ: 4297af2a7f7ca7adb3f8331203001e0fd2dae16f
   PromiseKit: b59eaaf257f72f1125fdac7bccfcc2ae2e014cc4
 

@@ -11,6 +11,21 @@
 			<key>StorePath</key>
 			<string>~/Screenshots/</string>
 		</dict>
+		<key>RemoteRESTAPIStorageAgent</key>
+		<dict>
+			<key>FileParamName</key>
+			<string>upload[file]</string>
+			<key>Method</key>
+			<string>POST</string>
+			<key>Path</key>
+			<string>/uploads</string>
+			<key>Scheme</key>
+			<string>http</string>
+			<key>Host</key>
+			<string>i.4pcbr.com</string>
+			<key>Enabled</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>
