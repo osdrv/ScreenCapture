@@ -10,13 +10,13 @@
 
 @implementation LocalFileStorageAgent
 
-- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFileHandleWithName {
+- (PMKPromise *)store:(Screenshot *)screenshot {
     
     NSLog(@"Storing file with LocalFile");
     
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
         
-        NSFileHandle *inputFile = [inputFileHandleWithName fileHandle];
+        NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"File"];
         
         NSAssert(inputFile != nil, @"Input file handle can not be nil");
         
@@ -34,7 +34,7 @@
         
         NSString *fileName = [[NSString stringWithFormat:@"%@/%@",
                               destinationFolder,
-                              [self generateFilenameYYYYMMDDHHIISS:inputFileHandleWithName]
+                              [self generateFilenameYYYYMMDDHHIISS:screenshot]
                               ] stringByStandardizingPath];
         
         NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
@@ -60,18 +60,15 @@
                 [outputFile writeData:buffer];
             }
             NSLog(@"Done copying the file");
-            self->result = fileName;
-            self->succeeded = YES;
+            [screenshot setValue:fileName forKey:@"FileName" inDomain:[self getDomain]];
         }
         @catch (NSException *exception) {
-            self->result = NULL;
-            self->succeeded = NO;
             @throw;
         }
         @finally {
             [inputFile seekToFileOffset:0];
             [outputFile closeFile];
-            fulfill(self->result);
+            fulfill(screenshot);
         }
     }];
 }

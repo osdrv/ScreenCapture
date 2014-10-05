@@ -9,7 +9,6 @@
 #import "StorageManager.h"
 #import "StorageAgent.h"
 #import "PromiseQueue.h"
-#import "NSFileHandleWithName.h"
 
 @implementation StorageManager
 
@@ -23,19 +22,26 @@
     return self;
 }
 
-- (PMKPromise *)storeFile:(NSFileHandleWithName *)fileHandleWithName {
+- (PMKPromise *)store:(Screenshot *)screenshot {
+    
     NSMutableArray *activeAgents = [[NSMutableArray alloc] init];
+    
     for (id<StorageAgent> agent in self->storageAgents) {
         if (![agent enabled]) continue;
         [activeAgents addObject:agent];
     }
+    
     NSLog(@"Store file called, %@", activeAgents);
+    
     PromiseQueue *pqueue = [[PromiseQueue alloc] initWithDeferreds:activeAgents];
-    return [pqueue proceed:fileHandleWithName];
+    
+    return [pqueue proceed:screenshot];
 }
 
 - (void)initAgentPoolWithOptions:(NSDictionary *)options {
+    
     self->storageAgents = [[NSMutableArray alloc] init];
+    
     for (NSString * className in options) {
         NSDictionary * agentOptions = [options valueForKey:className];
         Class klass = NSClassFromString(className);

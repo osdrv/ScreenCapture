@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/StorageManager.m"
-            timestampString = "434223825.868054"
+            timestampString = "434227669.107048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "-initWithOptions:"
             landmarkType = "5">
          </BreakpointContent>

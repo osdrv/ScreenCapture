@@ -12,11 +12,11 @@
 @interface GenericStorageAgent : NSObject <StorageAgent> {
 @protected
     NSDictionary *options;
-    NSString *result;
     BOOL enabled;
-    BOOL succeeded;
 }
 
-- (NSString *)generateFilenameYYYYMMDDHHIISS:(NSFileHandleWithName *)file;
+- (NSString *)generateFilenameYYYYMMDDHHIISS:(Screenshot *)screenshot;
+
+- (NSString *)getDomain;
 
 @end

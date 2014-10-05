@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <PromiseKit/NSTask+PromiseKit.h>
+#import "Screenshot.h"
 #import "NSFileHandleWithName.h"
 
 @interface AppDelegate ()
@@ -56,8 +57,13 @@
         
         // @TODO: fix me!
         // make sure file was actually created
-        NSFileHandleWithName *fileHandleWithName = [[NSFileHandleWithName alloc] initWithFileHandle:[NSFileHandle fileHandleForReadingAtPath:fileName] andFilename:fileName];
-        [self storeFile:fileHandleWithName];
+        
+        Screenshot *screenshot = [[Screenshot alloc] init];
+        [screenshot setValue:[NSFileHandle fileHandleForReadingAtPath:fileName]
+                      forKey:@"Handle" inDomain:@"File"];
+        [screenshot setValue:fileName forKey:@"Name" inDomain:@"File"];
+        
+        [self storeFile:screenshot];
     }).catch(^(NSError *error) {
         // @TODO: Handle screencapture error
     });
@@ -78,8 +84,8 @@
     return [NSString stringWithFormat:@"%s", tmpFile];
 }
 
-- (PMKPromise *) storeFile:(NSFileHandleWithName *)fileHandleWithName {
-    return [self->storageManager storeFile:fileHandleWithName];
+- (PMKPromise *) storeFile:(Screenshot *)screenshot {
+    return [self->storageManager store:screenshot];
 }
 
 @end

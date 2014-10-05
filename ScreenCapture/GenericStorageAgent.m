@@ -29,26 +29,30 @@
     self->enabled = enabled_;
 }
 
-- (BOOL)canStoreFile:(NSFileHandle *)file {
+- (BOOL)canStoreFile:(Screenshot *)screenshot {
     return YES;
 }
 
-- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFile {
+- (PMKPromise *)store:(Screenshot *)screenshot {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                  userInfo:nil];
 }
 
 - (PMKPromise *)proceed:(id)arg {
-    return [self storeFile:arg];
+    return [self store:arg];
 }
 
-- (NSString *)generateFilenameYYYYMMDDHHIISS:(NSFileHandleWithName *)file {
+- (NSString *)generateFilenameYYYYMMDDHHIISS:(Screenshot *)screenshot {
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
     //@TODO: fix .png here
     NSString *fileName = [NSString stringWithFormat:@"%@.png", [dateFormatter stringFromDate:[NSDate date]]];
     return fileName;
+}
+
+- (NSString *)getDomain {
+    return NSStringFromClass([self class]);
 }
 
 @end

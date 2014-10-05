@@ -11,7 +11,7 @@
 
 @implementation SFTPStorageAgent
 
-- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFileHandleWithName {
+- (PMKPromise *)store:(Screenshot *)screenshot {
     
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
     
@@ -30,31 +30,27 @@
                 NSLog(@"Successfully authorised as %@ on host %@", user, host);
             } else {
                 NSLog(@"Failed to authenticate user %@ with password", user);
-                self->result    = NULL;
-                self->succeeded = NO;
                 fulfill(NULL);
             }
 
-            NSString *remoteFileName  = [self generateFilenameYYYYMMDDHHIISS:inputFileHandleWithName];
+            NSString *remoteFileName  = [self generateFilenameYYYYMMDDHHIISS:screenshot];
             NSString *fileDestination = [NSString stringWithFormat:@"%@/%@", storagePath, remoteFileName];
             NSString *fileWebPath     = [NSString stringWithFormat:@"%@/%@", webPath, remoteFileName];
             NSURL    *resultURL       = [[NSURL alloc] initWithScheme:webScheme host:webHost path:fileWebPath];
             
-            BOOL success = [session.channel uploadFile:[inputFileHandleWithName fileName] to:fileDestination];
+            BOOL success = [session.channel uploadFile:[screenshot valueForKey:@"Name" inDomain:@"File"] to:fileDestination];
             
             if (success) {
                 NSLog(@"%@", resultURL);
-                self->result    = [resultURL absoluteString];
-                self->succeeded = YES;
+                [screenshot setValue:[resultURL absoluteString] forKey:@"URL" inDomain:[self getDomain]];
             }
-            
-            fulfill(self->result);
-            
+
             [session disconnect];
+            
+            fulfill(screenshot);
+            
         } else {
             NSLog(@"Unable to establish a connection to %@", host);
-            self->result    = NULL;
-            self->succeeded = NO;
             fulfill(NULL);
         }
     }];

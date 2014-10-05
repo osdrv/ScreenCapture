@@ -11,11 +11,11 @@
 
 @implementation RemoteRESTAPIStorageAgent
 
-- (PMKPromise *)storeFile:(NSFileHandleWithName *)inputFileHandleWithName {
+- (PMKPromise *)store:(Screenshot *)screenshot {
     
     NSLog(@"Storing file with RemoteRESTAPI");
     
-    NSFileHandle *inputFile = [inputFileHandleWithName fileHandle];
+    NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"File"];
     
     NSAssert(inputFile != nil, @"The input file is nil");
     NSString *scheme = [self->options valueForKey:@"Scheme"];
@@ -32,7 +32,7 @@
         [inputFile seekToFileOffset:0];
         NSData *fileContents = [inputFile readDataToEndOfFile];
         
-        [request setData:fileContents withFileName:[self generateFilenameYYYYMMDDHHIISS:inputFileHandleWithName] andContentType:@"image/png" forKey:[self->options valueForKey:@"FileParamName"]];
+        [request setData:fileContents withFileName:[self generateFilenameYYYYMMDDHHIISS:screenshot] andContentType:@"image/png" forKey:[self->options valueForKey:@"FileParamName"]];
         
         [request setCompletionBlock:^{
             
@@ -42,22 +42,17 @@
             
             if ([request responseStatusCode] == 200) {
                 NSURL *resultURL = [[NSURL alloc] initWithScheme:scheme host:host path:responseString];
-                self->result = [resultURL absoluteString];
-                NSLog(@"%@", self->result);
-                self->succeeded = YES;
+                [screenshot setValue:[resultURL absoluteString] forKey:@"URL" inDomain:[self getDomain]];
+                NSLog(@"%@", resultURL);
             } else {
-                self->result = NULL;
-                self->succeeded = NO;
             }
             
-            fulfill(self->result);
+            fulfill(screenshot);
         }];
         
         [request setFailedBlock:^{
             NSError *error = [request error];
-            self->result = NULL;
-            self->succeeded = NO;
-            fulfill(self->result);
+            fulfill(screenshot);
         }];
         
         [request startAsynchronous];

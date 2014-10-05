@@ -12,7 +12,7 @@
 		5D11B4AB19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4AA19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m */; };
 		5D11B4AE19E18C4B00A07CDB /* GenericStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4AD19E18C4B00A07CDB /* GenericStorageAgent.m */; };
 		5D11B4B119E1A7E600A07CDB /* SFTPStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */; };
-		5D11B4B519E1B3B900A07CDB /* NSFileHandleWithName.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4B419E1B3B900A07CDB /* NSFileHandleWithName.m */; };
+		5D11B4B819E1C03C00A07CDB /* Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4B719E1C03C00A07CDB /* Screenshot.m */; };
 		5D49380019D82C7A00008DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4937FF19D82C7A00008DFB /* main.m */; };
 		5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49380219D82C7A00008DFB /* AppDelegate.m */; };
 		5D49380519D82C7A00008DFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D49380419D82C7A00008DFB /* Images.xcassets */; };
@@ -46,8 +46,8 @@
 		5D11B4AD19E18C4B00A07CDB /* GenericStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericStorageAgent.m; sourceTree = "<group>"; };
 		5D11B4AF19E1A7E600A07CDB /* SFTPStorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTPStorageAgent.h; sourceTree = "<group>"; };
 		5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTPStorageAgent.m; sourceTree = "<group>"; };
-		5D11B4B319E1B3B900A07CDB /* NSFileHandleWithName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSFileHandleWithName.h; sourceTree = "<group>"; };
-		5D11B4B419E1B3B900A07CDB /* NSFileHandleWithName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSFileHandleWithName.m; sourceTree = "<group>"; };
+		5D11B4B619E1C03C00A07CDB /* Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screenshot.h; sourceTree = "<group>"; };
+		5D11B4B719E1C03C00A07CDB /* Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screenshot.m; sourceTree = "<group>"; };
 		5D4937FA19D82C7A00008DFB /* ScreenCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4937FE19D82C7A00008DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4937FF19D82C7A00008DFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 				5D49380619D82C7A00008DFB /* MainMenu.xib */,
 				5D4937FD19D82C7A00008DFB /* Supporting Files */,
 				5D49382B19D857E600008DFB /* StorageAgents.plist */,
-				5D11B4B319E1B3B900A07CDB /* NSFileHandleWithName.h */,
-				5D11B4B419E1B3B900A07CDB /* NSFileHandleWithName.m */,
+				5D11B4B619E1C03C00A07CDB /* Screenshot.h */,
+				5D11B4B719E1C03C00A07CDB /* Screenshot.m */,
 			);
 			path = ScreenCapture;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */,
 				5D11B4AE19E18C4B00A07CDB /* GenericStorageAgent.m in Sources */,
 				5D49380019D82C7A00008DFB /* main.m in Sources */,
-				5D11B4B519E1B3B900A07CDB /* NSFileHandleWithName.m in Sources */,
+				5D11B4B819E1C03C00A07CDB /* Screenshot.m in Sources */,
 				5D11B4B119E1A7E600A07CDB /* SFTPStorageAgent.m in Sources */,
 				5D11B4A719DB3E7C00A07CDB /* PromiseQueue.m in Sources */,
 			);
