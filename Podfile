@@ -8,6 +8,7 @@ target "ScreenCapture" do
   pod "PromiseKit/NSTask"
   pod "ASIHTTPRequest"
   pod "NMSSH"
+  pod "Dropbox-OSX-SDK"
 end
 
 target "ScreenCaptureTests" do

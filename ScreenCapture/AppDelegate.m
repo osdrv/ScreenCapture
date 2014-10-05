@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import <PromiseKit/NSTask+PromiseKit.h>
 #import "Screenshot.h"
-#import "NSFileHandleWithName.h"
 
 @interface AppDelegate ()
 

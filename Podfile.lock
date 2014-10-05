@@ -12,6 +12,7 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - Dropbox-OSX-SDK (1.3.13)
   - NMSSH (2.2.0)
   - OMGHTTPURLRQ (2.0.1):
     - OMGHTTPURLRQ/RQ
@@ -57,12 +58,14 @@ PODS:
 
 DEPENDENCIES:
   - ASIHTTPRequest
+  - Dropbox-OSX-SDK
   - NMSSH
   - PromiseKit
   - PromiseKit/NSTask
 
 SPEC CHECKSUMS:
   ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
+  Dropbox-OSX-SDK: bbcfc3398fd85874e15959d610cc856d61cc1b32
   NMSSH: 6075839f1d4415ce55bf5db62fa1178888e12ae5
   OMGHTTPURLRQ: 4297af2a7f7ca7adb3f8331203001e0fd2dae16f
   PromiseKit: b59eaaf257f72f1125fdac7bccfcc2ae2e014cc4
