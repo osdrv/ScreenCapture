@@ -8,13 +8,13 @@
 
 #import "StorageManager.h"
 #import "StorageAgent.h"
+#import "PromiseQueue.h"
 
 @implementation StorageManager
 
--(id)initWithOptions:(NSHashTable *)options {
+- (id)initWithOptions:(NSHashTable *)options {
     
     if (self = [super init]) {
-        // @TODO: Init agents
         NSDictionary * agents = [options valueForKey:@"Agents"];
         [self initAgentPoolWithOptions:agents];
     }
@@ -22,13 +22,18 @@
     return self;
 }
 
--(int)storeFile:(FILE *)filePtr {
-    // @TODO: implement me!
-    
-    return 0;
+- (PMKPromise *)storeFile:(NSFileHandle *)filePtr {
+    NSMutableArray *activeAgents = [[NSMutableArray alloc] init];
+    for (id<StorageAgent> agent in self->storageAgents) {
+        if (![agent enabled]) continue;
+        [activeAgents addObject:agent];
+    }
+    NSLog(@"Store file called, %@", activeAgents);
+    PromiseQueue *pqueue = [[PromiseQueue alloc] initWithDeferreds:activeAgents];
+    return [pqueue proceed:filePtr];
 }
 
--(void)initAgentPoolWithOptions:(NSDictionary*)options {
+- (void)initAgentPoolWithOptions:(NSDictionary *)options {
     self->storageAgents = [[NSMutableArray alloc] init];
     for (NSString * className in options) {
         NSDictionary * agentOptions = [options valueForKey:className];

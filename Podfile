@@ -5,6 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target "ScreenCapture" do
   pod "PromiseKit"
+  pod "PromiseKit/NSTask"
 end
 
 target "ScreenCaptureTests" do

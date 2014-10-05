@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PromiseKit.h>
+#import "Processable.h"
 
-@protocol StorageAgent <NSObject>
+@protocol StorageAgent <NSObject, Processable>
 
 @required
 
--(BOOL)enabled;
+- (BOOL)enabled;
 
--(void)setEnabled:(BOOL)enabled_;
+- (void)setEnabled:(BOOL)enabled_;
 
--(id)initAgentWithOptions:(NSDictionary*)options;
+- (id)initAgentWithOptions:(NSDictionary *)options;
 
--(BOOL)canStoreFile:(FILE*)file;
+- (BOOL)canStoreFile:(NSFileHandle *)file;
 
--(void)storeFile:(FILE*)file withCallback:(void( ^ )(NSData*))callback;
+- (PMKPromise *)storeFile:(NSFileHandle *)file;
 
 @end

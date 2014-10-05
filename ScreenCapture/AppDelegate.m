@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <PromiseKit/NSTask+PromiseKit.h>
 
 @interface AppDelegate ()
 
@@ -15,7 +16,7 @@
 
 @implementation AppDelegate
 
--(id)init {
+- (id)init {
     if (self = [super init]) {
         [self initStorageManager];
     }
@@ -29,11 +30,10 @@
     [self.window orderOut:self];
     
     
-    NSTask *screenCapture = [[NSTask alloc] init];
+    NSTask   *screenCapture = [[NSTask alloc] init];
     NSString *imageFormat = @"png";
-    NSString * tmpDir = NSTemporaryDirectory();
+    NSString *tmpDir = NSTemporaryDirectory();
     NSString *tmpFileTemplate = [NSString stringWithFormat:@"%@XXXXXX", tmpDir];
-    
     NSString *fileName = [self mkTmpFileWithTmpl:tmpFileTemplate];
     
     NSArray *launchArguments = [NSArray arrayWithObjects:
@@ -48,21 +48,25 @@
     [screenCapture setArguments:launchArguments];
     
     // Launch screencapture app
-    [screenCapture launch];
-    [screenCapture waitUntilExit];
-    
-    // @TODO: make sure file exists and non-zero
-    
-    // Show hidden window
-    [self.window makeKeyAndOrderFront:self];
-    [NSApp activateIgnoringOtherApps:YES];
+    [screenCapture promise].then(^(NSData *data) {
+        // Show hidden window
+        [self.window makeKeyAndOrderFront:self];
+        [NSApp activateIgnoringOtherApps:YES];
+        
+        // @TODO: fix me!
+        // make sure file was actually created
+        NSFileHandle *file = [NSFileHandle fileHandleForReadingAtPath:fileName];
+        [self storeFile:file];
+    }).catch(^(NSError *error) {
+        // @TODO: Handle screencapture error
+    });
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
 
--(void)initStorageManager {
+- (void)initStorageManager {
     NSDictionary * options = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"StorageAgents" ofType:@"plist"]];
     self->storageManager = [[StorageManager alloc] initWithOptions:options];
 }
@@ -71,6 +75,10 @@
     char * tmpFile = mktemp((char*)[fileTmpl UTF8String]);
     // @TODO: handle possible error here
     return [NSString stringWithFormat:@"%s", tmpFile];
+}
+
+- (PMKPromise *) storeFile:(NSFileHandle *)file {
+    return [self->storageManager storeFile:file];
 }
 
 @end

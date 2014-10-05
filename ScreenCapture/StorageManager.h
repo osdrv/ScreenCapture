@@ -13,8 +13,8 @@
     NSMutableArray *storageAgents;
 }
 
--(id)initWithOptions:(NSDictionary*)options;
+- (id)initWithOptions:(NSDictionary *)options;
 
--(int)storeFile:(FILE*)filePtr;
+- (PMKPromise *)storeFile:(NSFileHandle *)filePtr;
 
 @end

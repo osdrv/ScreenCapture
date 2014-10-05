@@ -9,7 +9,7 @@
 			<key>Enabled</key>
 			<true/>
 			<key>StorePath</key>
-			<string>Screenshots</string>
+			<string>~/Screenshots/</string>
 		</dict>
 	</dict>
 </dict>

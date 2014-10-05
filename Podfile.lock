@@ -19,6 +19,8 @@ PODS:
     - PromiseKit/When
   - PromiseKit/NSNotificationCenter (0.9.17.1):
     - PromiseKit/Promise
+  - PromiseKit/NSTask (0.9.17.1):
+    - PromiseKit/Promise
   - PromiseKit/NSURLConnection (0.9.17.1):
     - OMGHTTPURLRQ
     - PromiseKit/Promise
@@ -41,6 +43,7 @@ PODS:
 
 DEPENDENCIES:
   - PromiseKit
+  - PromiseKit/NSTask
 
 SPEC CHECKSUMS:
   OMGHTTPURLRQ: 4297af2a7f7ca7adb3f8331203001e0fd2dae16f

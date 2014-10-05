@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/StorageAgent.h"
-            timestampString = "433612029.344725"
+            timestampString = "434203465.314707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-storeFile:withCallback:"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-storeFile:"
             landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/AppDelegate.m"
-            timestampString = "433609268.528261"
+            timestampString = "433797693.701675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-initStorageManager"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/StorageManager.m"
-            timestampString = "433611373.977932"
+            timestampString = "434203465.314707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
