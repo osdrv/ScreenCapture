@@ -16,7 +16,7 @@
     
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
         
-        NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"File"];
+        NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"Generic"];
         
         NSAssert(inputFile != nil, @"Input file handle can not be nil");
         
@@ -32,10 +32,11 @@
             NSLog(@"Error creating folder %@", destinationFolder);
         }
         
+        NSString *yyyymmddName = [screenshot valueForKey:@"FileName" inDomain:@"Generic"];
+        
         NSString *fileName = [[NSString stringWithFormat:@"%@/%@",
                               destinationFolder,
-                              [self generateFilenameYYYYMMDDHHIISS:screenshot]
-                              ] stringByStandardizingPath];
+                              yyyymmddName] stringByStandardizingPath];
         
         NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
         

@@ -14,6 +14,7 @@
 		5D11B4B119E1A7E600A07CDB /* SFTPStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */; };
 		5D11B4B819E1C03C00A07CDB /* Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4B719E1C03C00A07CDB /* Screenshot.m */; };
 		5D11B4BB19E1E70D00A07CDB /* DropBoxStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4BA19E1E70D00A07CDB /* DropBoxStorageAgent.m */; };
+		5D11B4BE19E4885500A07CDB /* PrimaryStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */; };
 		5D49380019D82C7A00008DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4937FF19D82C7A00008DFB /* main.m */; };
 		5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49380219D82C7A00008DFB /* AppDelegate.m */; };
 		5D49380519D82C7A00008DFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D49380419D82C7A00008DFB /* Images.xcassets */; };
@@ -51,6 +52,8 @@
 		5D11B4B719E1C03C00A07CDB /* Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screenshot.m; sourceTree = "<group>"; };
 		5D11B4B919E1E70D00A07CDB /* DropBoxStorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxStorageAgent.h; sourceTree = "<group>"; };
 		5D11B4BA19E1E70D00A07CDB /* DropBoxStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxStorageAgent.m; sourceTree = "<group>"; };
+		5D11B4BC19E4885500A07CDB /* PrimaryStorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryStorageAgent.h; sourceTree = "<group>"; };
+		5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryStorageAgent.m; sourceTree = "<group>"; };
 		5D4937FA19D82C7A00008DFB /* ScreenCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4937FE19D82C7A00008DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4937FF19D82C7A00008DFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				5D11B4AF19E1A7E600A07CDB /* SFTPStorageAgent.h */,
 				5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */,
 				5D49382719D840DD00008DFB /* StorageAgent.h */,
+				5D11B4BC19E4885500A07CDB /* PrimaryStorageAgent.h */,
+				5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */,
 			);
 			name = StorageAgents;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D11B4BE19E4885500A07CDB /* PrimaryStorageAgent.m in Sources */,
 				5D49382219D83F3A00008DFB /* StorageManager.m in Sources */,
 				5D49382A19D844B200008DFB /* LocalFileStorageAgent.m in Sources */,
 				5D11B4AB19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m in Sources */,

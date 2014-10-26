@@ -59,8 +59,8 @@
         
         Screenshot *screenshot = [[Screenshot alloc] init];
         [screenshot setValue:[NSFileHandle fileHandleForReadingAtPath:fileName]
-                      forKey:@"Handle" inDomain:@"File"];
-        [screenshot setValue:fileName forKey:@"Name" inDomain:@"File"];
+                      forKey:@"Handle" inDomain:@"Generic"];
+        [screenshot setValue:fileName forKey:@"TmpName" inDomain:@"Generic"];
         
         [self storeFile:screenshot];
     }).catch(^(NSError *error) {

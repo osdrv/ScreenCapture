@@ -9,6 +9,7 @@
 #import "StorageManager.h"
 #import "StorageAgent.h"
 #import "PromiseQueue.h"
+#import "PrimaryStorageAgent.h"
 
 @implementation StorageManager
 
@@ -41,6 +42,8 @@
 - (void)initAgentPoolWithOptions:(NSDictionary *)options {
     
     self->storageAgents = [[NSMutableArray alloc] init];
+    
+    [self->storageAgents addObject:[[PrimaryStorageAgent alloc] init]];
     
     for (NSString * className in options) {
         NSDictionary * agentOptions = [options valueForKey:className];

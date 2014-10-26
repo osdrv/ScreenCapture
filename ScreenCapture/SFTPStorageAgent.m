@@ -33,12 +33,12 @@
                 fulfill(NULL);
             }
 
-            NSString *remoteFileName  = [self generateFilenameYYYYMMDDHHIISS:screenshot];
-            NSString *fileDestination = [NSString stringWithFormat:@"%@/%@", storagePath, remoteFileName];
-            NSString *fileWebPath     = [NSString stringWithFormat:@"%@/%@", webPath, remoteFileName];
-            NSURL    *resultURL       = [[NSURL alloc] initWithScheme:webScheme host:webHost path:fileWebPath];
+            NSString    *remoteFileName  = [screenshot valueForKey:@"FileName" inDomain:@"Generic"];
+            NSString    *fileDestination = [NSString stringWithFormat:@"%@/%@", storagePath, remoteFileName];
+            NSString    *fileWebPath     = [NSString stringWithFormat:@"%@/%@", webPath, remoteFileName];
+            NSURL       *resultURL       = [[NSURL alloc] initWithScheme:webScheme host:webHost path:fileWebPath];
             
-            BOOL success = [session.channel uploadFile:[screenshot valueForKey:@"Name" inDomain:@"File"] to:fileDestination];
+            BOOL success = [session.channel uploadFile:[screenshot valueForKey:@"TmpName" inDomain:@"Generic"] to:fileDestination];
             
             if (success) {
                 NSLog(@"%@", resultURL);

@@ -15,12 +15,13 @@
     
     NSLog(@"Storing file with RemoteRESTAPI");
     
-    NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"File"];
+    NSFileHandle *inputFile = [screenshot valueForKey:@"Handle" inDomain:@"Generic"];
     
     NSAssert(inputFile != nil, @"The input file is nil");
+    
     NSString *scheme = [self->options valueForKey:@"Scheme"];
-    NSString *host = [self->options valueForKey:@"Host"];
-    NSString *path = [self->options valueForKey:@"Path"];
+    NSString *host   = [self->options valueForKey:@"Host"];
+    NSString *path   = [self->options valueForKey:@"Path"];
     
     NSURL *url = [[NSURL alloc] initWithScheme:scheme host:host path:path];
     
