@@ -12,10 +12,18 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
+
+- (IBAction)screenshotAction:(id)sender {
+    [self makeScreenshot];
+}
+
+
+- (IBAction)quitAction:(id)sender {
+    exit(0);
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -25,12 +33,18 @@
     return self;
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (void)awakeFromNib {
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    NSImage *menuIcon = [NSImage imageNamed:@"Menu icon"];
+    NSImage *highlightIcon = [NSImage imageNamed:@"Menu icon"];
+    [highlightIcon setTemplate:YES];
+    [[self statusItem] setImage:menuIcon];
+    [[self statusItem] setAlternateImage:highlightIcon];
+    [[self statusItem] setMenu:[self menu]];
+    [[self statusItem] setHighlightMode:YES];
+}
 
-    [self.window orderOut:self];
-    
-    
+- (void)makeScreenshot {
     NSTask   *screenCapture = [[NSTask alloc] init];
     NSString *imageFormat = @"png";
     NSString *tmpDir = NSTemporaryDirectory();
@@ -50,8 +64,7 @@
     
     // Launch screencapture app
     [screenCapture promise].then(^(NSData *data) {
-        // Show hidden window
-        [self.window makeKeyAndOrderFront:self];
+        
         [NSApp activateIgnoringOtherApps:YES];
         
         // @TODO: fix me!
@@ -68,6 +81,11 @@
     });
 }
 
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+
+}
+
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
@@ -77,13 +95,13 @@
     self->storageManager = [[StorageManager alloc] initWithOptions:options];
 }
 
-- (NSString*)mkTmpFileWithTmpl:(NSString *)fileTmpl {
+- (NSString *)mkTmpFileWithTmpl:(NSString *)fileTmpl {
     char * tmpFile = mktemp((char*)[fileTmpl UTF8String]);
     // @TODO: handle possible error here
     return [NSString stringWithFormat:@"%s", tmpFile];
 }
 
-- (PMKPromise *) storeFile:(Screenshot *)screenshot {
+- (PMKPromise *)storeFile:(Screenshot *)screenshot {
     return [self->storageManager store:screenshot];
 }
 

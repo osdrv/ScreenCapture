@@ -14,6 +14,13 @@
     StorageManager * storageManager;
 }
 
+@property (readwrite, retain) IBOutlet NSMenu *menu;
+@property (readwrite, retain) IBOutlet NSStatusItem *statusItem;
+//@property (readwrite, retain) IBOutlet NSStatusItem *screenshotStatusItem;
+//@property (readwrite, retain) IBOutlet NSStatusItem *quitStatusItem;
+
+- (IBAction)screenshotAction:(id)sender;
+- (IBAction)quitAction:(id)sender;
 
 @end
 

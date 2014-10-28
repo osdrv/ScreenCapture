@@ -105,6 +105,7 @@
 
 - (void)restClient:(DBRestClient*)restClient loadedSharableLink:(NSString*)link forFile:(NSString*)path {
     NSLog(@"Share url: %@", link);
+    [self->screenshot setValue:link forKey:@"URL" inDomain:[self getDomain]];
     if (self->DBFileUploadHandler) {
         self->DBFileUploadHandler();
     }

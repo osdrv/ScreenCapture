@@ -9,6 +9,7 @@ target "ScreenCapture" do
   pod "ASIHTTPRequest"
   pod "NMSSH"
   pod "Dropbox-OSX-SDK"
+  pod "Google-API-Client"
 end
 
 target "ScreenCaptureTests" do
