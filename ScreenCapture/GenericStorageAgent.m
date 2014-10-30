@@ -7,6 +7,7 @@
 //
 
 #import "GenericStorageAgent.h"
+#import <AppKit/NSMenuItem.h>
 
 @implementation GenericStorageAgent
 
@@ -54,5 +55,6 @@
 - (NSString *)getDomain {
     return NSStringFromClass([self class]);
 }
+
 
 @end

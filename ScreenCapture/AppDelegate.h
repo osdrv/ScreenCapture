@@ -11,16 +11,22 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     @protected
-    StorageManager * storageManager;
+    StorageManager *storageManager;
+    NSMutableArray *screenshotMenuItems;
 }
 
 @property (readwrite, retain) IBOutlet NSMenu *menu;
 @property (readwrite, retain) IBOutlet NSStatusItem *statusItem;
-//@property (readwrite, retain) IBOutlet NSStatusItem *screenshotStatusItem;
-//@property (readwrite, retain) IBOutlet NSStatusItem *quitStatusItem;
+@property (readwrite, retain) IBOutlet NSMenuItem *anchorMenuItem;
+
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)screenshotAction:(id)sender;
 - (IBAction)quitAction:(id)sender;
+
+- (void)saveDBData;
 
 @end
 

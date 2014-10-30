@@ -7,9 +7,10 @@
 //
 
 #import "StorageManager.h"
-#import "StorageAgent.h"
 #import "PromiseQueue.h"
 #import "PrimaryStorageAgent.h"
+#import "GenericStorageAgent.h"
+#import "GenericStorageAgent+ViewBuilder.h"
 
 @implementation StorageManager
 
@@ -27,7 +28,7 @@
     
     NSMutableArray *activeAgents = [[NSMutableArray alloc] init];
     
-    for (id<StorageAgent> agent in self->storageAgents) {
+    for (GenericStorageAgent *agent in self->storageAgents) {
         if (![agent enabled]) continue;
         [activeAgents addObject:agent];
     }
@@ -48,9 +49,20 @@
     for (NSString * className in options) {
         NSDictionary * agentOptions = [options valueForKey:className];
         Class klass = NSClassFromString(className);
-        id<StorageAgent> agent = [[klass alloc] initAgentWithOptions:agentOptions];
+        GenericStorageAgent *agent = [[klass alloc] initAgentWithOptions:agentOptions];
         [self->storageAgents addObject:agent];
     }
+}
+
+- (NSArray *)buildMenuActionListViews:(NSManagedObject *)managedObject {
+    NSMutableArray *actionList = [[NSMutableArray alloc] init];
+    
+    for (GenericStorageAgent *agent in self->storageAgents) {
+        if (![agent enabled] || ![agent hasMenuAction]) continue;
+        [actionList addObject:[agent buildActionView:managedObject withBuilder:[agent getMenuItemViewBuilder]]];
+    }
+    
+    return actionList;
 }
 
 @end

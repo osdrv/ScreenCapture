@@ -7,6 +7,7 @@
 //
 
 #import "LocalFileStorageAgent.h"
+#import "LocalFileMenuActionViewBuilder.h"
 
 @implementation LocalFileStorageAgent
 
@@ -72,6 +73,10 @@
             fulfill(screenshot);
         }
     }];
+}
+
+- (AbstractStorageAgentViewBuilder *)getMenuItemViewBuilder {
+    return [[LocalFileMenuActionViewBuilder alloc] init];
 }
 
 @end

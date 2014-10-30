@@ -14,41 +14,22 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="anchorMenuItem" destination="tMY-NJ-5qt" id="24N-6l-mss"/>
                 <outlet property="menu" destination="1EO-IW-zs6" id="LvF-IA-trr"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="1EO-IW-zs6">
             <items>
-                <menuItem title="Screenshot" id="PFg-xx-KQK">
+                <menuItem title="New screenshot" id="PFg-xx-KQK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="screenshotAction:" target="Voe-Tx-rLC" id="C0H-vr-LQs"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="5bu-sh-xek"/>
-                <menuItem title="Recent screenshots" enabled="NO" id="tMY-NJ-5qt">
+                <menuItem title="..." enabled="NO" id="tMY-NJ-5qt">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="15:15:01 24 Oct 2014" id="PCq-XI-k87">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="15:15:01 24 Oct 2014" id="Jx4-5f-dYX">
-                        <items>
-                            <menuItem title="Copy share link" id="nGl-iX-LMp">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="15:16:21 24 Oct 2014" id="ayH-og-TcD">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="15:16:21 24 Oct 2014" id="JlM-Ax-JJC">
-                        <items>
-                            <menuItem title="Copy share link" id="Y0E-8J-uae">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="eJm-02-gaV"/>
                 <menuItem title="Quit" id="9Nk-Va-okW">

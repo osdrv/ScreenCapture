@@ -29,7 +29,9 @@
             NSLog(@"About to call object proceed");
             [obj proceed:arg].then(^(NSData *data) {
                 NSLog(@"Jumping to to next procesible");
-                [self _next:arg];
+                [self _next:arg].then(^(NSData *data) {
+                    fulfill(NULL);
+                });
             });
         } else {
             NSLog(@"No further handlers defined, exiting the queue loop");

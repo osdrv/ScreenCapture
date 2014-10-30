@@ -9,6 +9,8 @@
 #import "PrimaryStorageAgent.h"
 #import <Promise.h>
 #import "Screenshot.h"
+#import <CoreData/CoreData.h>
+#import "PrimaryStorageItem.h"
 
 @implementation PrimaryStorageAgent
 
@@ -23,8 +25,23 @@
 
 - (PMKPromise *)store:(Screenshot *)screenshot_ {
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
-        [screenshot_ setValue:[self generateFilenameYYYYMMDDHHIISS:screenshot_] forKey:@"FileName" inDomain:@"Generic"];
-        fulfill(screenshot_);
+        NSString *yyyymmddName = [self generateFilenameYYYYMMDDHHIISS:screenshot_];
+        [screenshot_ setValue:yyyymmddName forKey:@"FileName" inDomain:@"Generic"];
+        
+        NSManagedObjectContext *context = [screenshot_ valueForKey:@"Context" inDomain:@"DB"];
+        
+        @try {
+            PrimaryStorageItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"PrimaryStorageItem" inManagedObjectContext:context];
+            item.date = [NSDate date];
+            item.name = yyyymmddName;
+//            [screenshot_ setValue:item forKey:@"PrimaryStorageItem" inDomain:@"DB"];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception);
+        }
+        @finally {
+            fulfill(screenshot_);
+        }
     }];
 }
 

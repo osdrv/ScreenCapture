@@ -16,6 +16,13 @@
 		5D11B4BB19E1E70D00A07CDB /* DropBoxStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4BA19E1E70D00A07CDB /* DropBoxStorageAgent.m */; };
 		5D11B4BE19E4885500A07CDB /* PrimaryStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */; };
 		5D11B4C119FD728E00A07CDB /* GoogleDriveStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D11B4C019FD728E00A07CDB /* GoogleDriveStorageAgent.m */; };
+		5D3F23581A0183EB00C4E2E2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3F23571A0183EB00C4E2E2 /* CoreData.framework */; };
+		5D3F235B1A01846E00C4E2E2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23591A01846E00C4E2E2 /* Model.xcdatamodeld */; };
+		5D3F238D1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F238C1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m */; };
+		5D3F23901A01931F00C4E2E2 /* PrimaryStorageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F238F1A01931F00C4E2E2 /* PrimaryStorageItem.m */; };
+		5D3F23981A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23971A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m */; };
+		5D3F239B1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F239A1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m */; };
+		5D3F23A11A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */; };
 		5D49380019D82C7A00008DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4937FF19D82C7A00008DFB /* main.m */; };
 		5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49380219D82C7A00008DFB /* AppDelegate.m */; };
 		5D49380519D82C7A00008DFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D49380419D82C7A00008DFB /* Images.xcassets */; };
@@ -57,6 +64,18 @@
 		5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryStorageAgent.m; sourceTree = "<group>"; };
 		5D11B4BF19FD728E00A07CDB /* GoogleDriveStorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveStorageAgent.h; sourceTree = "<group>"; };
 		5D11B4C019FD728E00A07CDB /* GoogleDriveStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveStorageAgent.m; sourceTree = "<group>"; };
+		5D3F23571A0183EB00C4E2E2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5D3F235A1A01846E00C4E2E2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5D3F238B1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteRESTAPIStorageItem.h; sourceTree = "<group>"; };
+		5D3F238C1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteRESTAPIStorageItem.m; sourceTree = "<group>"; };
+		5D3F238E1A01931F00C4E2E2 /* PrimaryStorageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryStorageItem.h; sourceTree = "<group>"; };
+		5D3F238F1A01931F00C4E2E2 /* PrimaryStorageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryStorageItem.m; sourceTree = "<group>"; };
+		5D3F23961A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileMenuActionViewBuilder.h; sourceTree = "<group>"; };
+		5D3F23971A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileMenuActionViewBuilder.m; sourceTree = "<group>"; };
+		5D3F23991A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractStorageAgentViewBuilder.h; sourceTree = "<group>"; };
+		5D3F239A1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractStorageAgentViewBuilder.m; sourceTree = "<group>"; };
+		5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GenericStorageAgent+ViewBuilder.h"; sourceTree = "<group>"; };
+		5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GenericStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
 		5D4937FA19D82C7A00008DFB /* ScreenCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4937FE19D82C7A00008DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4937FF19D82C7A00008DFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,7 +88,6 @@
 		5D49381319D82C7A00008DFB /* ScreenCaptureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenCaptureTests.m; sourceTree = "<group>"; };
 		5D49382019D83F3A00008DFB /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
 		5D49382119D83F3A00008DFB /* StorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageManager.m; sourceTree = "<group>"; };
-		5D49382719D840DD00008DFB /* StorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageAgent.h; sourceTree = "<group>"; };
 		5D49382819D844B200008DFB /* LocalFileStorageAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFileStorageAgent.h; sourceTree = "<group>"; };
 		5D49382919D844B200008DFB /* LocalFileStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFileStorageAgent.m; sourceTree = "<group>"; };
 		5D49382B19D857E600008DFB /* StorageAgents.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StorageAgents.plist; sourceTree = "<group>"; };
@@ -80,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3F23581A0183EB00C4E2E2 /* CoreData.framework in Frameworks */,
 				18C983760F64E64C7FAE6C9D /* libPods-ScreenCapture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,9 +116,32 @@
 		4F427519E70E06475497BA0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D3F23571A0183EB00C4E2E2 /* CoreData.framework */,
 				1FC51128B0329A0EA0440369 /* libPods-ScreenCapture.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D3F23911A01934C00C4E2E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D3F238E1A01931F00C4E2E2 /* PrimaryStorageItem.h */,
+				5D3F238F1A01931F00C4E2E2 /* PrimaryStorageItem.m */,
+				5D3F238B1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.h */,
+				5D3F238C1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5D3F23951A025DC500C4E2E2 /* StorageAgentViewBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				5D3F23961A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.h */,
+				5D3F23971A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m */,
+				5D3F23991A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.h */,
+				5D3F239A1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m */,
+			);
+			name = StorageAgentViewBuilders;
 			sourceTree = "<group>";
 		};
 		5D4937F119D82C7900008DFB = {
@@ -125,9 +167,11 @@
 		5D4937FC19D82C7A00008DFB /* ScreenCapture */ = {
 			isa = PBXGroup;
 			children = (
+				5D3F23911A01934C00C4E2E2 /* Models */,
 				5D49380119D82C7A00008DFB /* AppDelegate.h */,
 				5D49380219D82C7A00008DFB /* AppDelegate.m */,
 				5D49380419D82C7A00008DFB /* Images.xcassets */,
+				5D3F23591A01846E00C4E2E2 /* Model.xcdatamodeld */,
 				5D49380619D82C7A00008DFB /* MainMenu.xib */,
 				5D11B4A819DB51A500A07CDB /* Processable.h */,
 				5D11B4A519DB3E7C00A07CDB /* PromiseQueue.h */,
@@ -138,6 +182,7 @@
 				5D49382B19D857E600008DFB /* StorageAgents.plist */,
 				5D49382019D83F3A00008DFB /* StorageManager.h */,
 				5D49382119D83F3A00008DFB /* StorageManager.m */,
+				5D3F23951A025DC500C4E2E2 /* StorageAgentViewBuilders */,
 				5D4937FD19D82C7A00008DFB /* Supporting Files */,
 			);
 			path = ScreenCapture;
@@ -186,7 +231,8 @@
 				5D11B4AA19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m */,
 				5D11B4AF19E1A7E600A07CDB /* SFTPStorageAgent.h */,
 				5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */,
-				5D49382719D840DD00008DFB /* StorageAgent.h */,
+				5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */,
+				5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */,
 			);
 			name = StorageAgents;
 			sourceTree = "<group>";
@@ -339,14 +385,20 @@
 				5D49382219D83F3A00008DFB /* StorageManager.m in Sources */,
 				5D49382A19D844B200008DFB /* LocalFileStorageAgent.m in Sources */,
 				5D11B4C119FD728E00A07CDB /* GoogleDriveStorageAgent.m in Sources */,
+				5D3F238D1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m in Sources */,
 				5D11B4AB19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m in Sources */,
+				5D3F23981A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m in Sources */,
 				5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */,
 				5D11B4AE19E18C4B00A07CDB /* GenericStorageAgent.m in Sources */,
 				5D49380019D82C7A00008DFB /* main.m in Sources */,
 				5D11B4B819E1C03C00A07CDB /* Screenshot.m in Sources */,
 				5D11B4B119E1A7E600A07CDB /* SFTPStorageAgent.m in Sources */,
 				5D11B4BB19E1E70D00A07CDB /* DropBoxStorageAgent.m in Sources */,
+				5D3F239B1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m in Sources */,
+				5D3F235B1A01846E00C4E2E2 /* Model.xcdatamodeld in Sources */,
 				5D11B4A719DB3E7C00A07CDB /* PromiseQueue.m in Sources */,
+				5D3F23A11A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m in Sources */,
+				5D3F23901A01931F00C4E2E2 /* PrimaryStorageItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +609,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5D3F23591A01846E00C4E2E2 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D3F235A1A01846E00C4E2E2 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5D3F235A1A01846E00C4E2E2 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5D4937F219D82C7900008DFB /* Project object */;
 }

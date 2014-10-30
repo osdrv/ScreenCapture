@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/StorageAgent.h"
-            timestampString = "434223825.868054"
+            timestampString = "436364670.874493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-storeFile:"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-store:"
             landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/AppDelegate.m"
-            timestampString = "434239267.418913"
+            timestampString = "436368897.213511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-applicationDidFinishLaunching:"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-applicationWillTerminate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/StorageManager.m"
-            timestampString = "434227669.107048"
+            timestampString = "436367957.620411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "-initWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
