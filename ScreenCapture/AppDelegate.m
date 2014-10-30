@@ -77,38 +77,34 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     
     NSArray *menuItems = [self.menu itemArray];
     NSInteger count = [menuItems count];
-    NSArray *tailMenuItems = [menuItems subarrayWithRange:(NSRange){count - TAIL_ELEMENTS_LENGTH, TAIL_ELEMENTS_LENGTH}];
     
-    for (NSMenuItem *item in tailMenuItems) {
-        [self.menu removeItem:item];
-    }
-
+    NSInteger anchorIndex = [self.menu indexOfItem:self.anchorMenuItem];
+    
     // 4. insert new items in the menu
 
     for (PrimaryStorageItem *item in primaryStorageItems) {
         NSMenuItem *menuItem = [self buildScreenshotMenuItem:item];
         [screenshotMenuItems addObject:menuItem];
-        [self.menu addItem:menuItem];
-    }
-    
-    for (NSMenuItem *item in tailMenuItems) {
-        [self.menu addItem:item];
+        [self.menu insertItem:menuItem atIndex:(++anchorIndex)];
     }
     
 }
 
 -(NSMenuItem *)buildScreenshotMenuItem:(PrimaryStorageItem *)item {
     
-    NSMenuItem *subMenu = [[NSMenuItem alloc] init];
-    subMenu.title = item.name;
+    NSMenuItem *menuItem = [[NSMenuItem alloc] init];
+    menuItem.title = item.name;
     
     NSArray *submenuItems = [storageManager buildMenuActionListViews:item];
+    NSMenu *subMenu = [[NSMenu alloc] init];
     
-    for (NSMenu *subMenuItem in submenuItems) {
-        [subMenu setSubmenu:subMenuItem];
+    for (NSMenuItem *subMenuItem in submenuItems) {
+        [subMenu addItem:subMenuItem];
     }
     
-    return subMenu;
+    [menuItem setSubmenu:subMenu];
+    
+    return menuItem;
 }
 
 - (void)makeScreenshot {
