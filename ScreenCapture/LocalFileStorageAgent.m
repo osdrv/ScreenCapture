@@ -44,13 +44,10 @@
         NSString *yyyymmddName = [screenshot valueForKey:@"FileName" inDomain:@"Generic"];
         
         NSString *fileName = [self filePathFor:yyyymmddName];
-//        [[NSString stringWithFormat:@"%@/%@",
-//                              destinationFolder,
-//                              yyyymmddName] stringByStandardizingPath];
         
         NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
         
-        NSLog(@"About to create a new file: %@", fileName);
+        NSLog(@"Will create a new file: %@", fileName);
         
         NSString *failedAssertMsg = [NSString stringWithFormat:@"Failed to create the destination file, %@", fileName];
         

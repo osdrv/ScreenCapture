@@ -26,8 +26,17 @@
 			<key>Host</key>
 			<string>i.4pcbr.com</string>
 			<key>Enabled</key>
-			<false/>
+			<true/>
 			<key>HasMenuAction</key>
+			<true/>
+		</dict>
+    <key>DropBoxStorageAgent</key>
+		<dict>
+			<key>Destination</key>
+			<string>/Screenshots/</string>
+			<key>Enabled</key>
+			<true/>
+      <key>HasMenuAction</key>
 			<true/>
 		</dict>
 	</dict>

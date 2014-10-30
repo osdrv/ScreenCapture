@@ -59,7 +59,9 @@
     
     for (GenericStorageAgent *agent in self->storageAgents) {
         if (![agent enabled] || ![agent hasMenuAction]) continue;
-        [actionList addObject:[agent buildActionView:managedObject withBuilder:[agent getMenuItemViewBuilder]]];
+        NSView *menuItem = [agent buildActionView:managedObject withBuilder:[agent getMenuItemViewBuilder]];
+        if (menuItem == NULL) continue;
+        [actionList addObject:menuItem];
     }
     
     return actionList;

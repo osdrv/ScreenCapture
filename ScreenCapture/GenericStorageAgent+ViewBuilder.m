@@ -21,7 +21,7 @@
 }
 
 - (BOOL)hasMenuAction {
-    return [options valueForKey:@"HasMenuAction"] || NO;
+    return (BOOL)([options valueForKey:@"HasMenuAction"]) || NO;
 }
 
 @end

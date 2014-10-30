@@ -34,7 +34,7 @@
             PrimaryStorageItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"PrimaryStorageItem" inManagedObjectContext:context];
             item.date = [NSDate date];
             item.name = yyyymmddName;
-//            [screenshot_ setValue:item forKey:@"PrimaryStorageItem" inDomain:@"DB"];
+            [screenshot_ setValue:item forKey:@"PrimaryStorageItem" inDomain:@"DB"];
         }
         @catch (NSException *exception) {
             NSLog(@"%@", exception);

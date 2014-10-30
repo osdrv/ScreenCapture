@@ -11,7 +11,7 @@
 @implementation DropBoxStorageAgent {
     PMKPromiseFulfiller DBAuthSuccess;
     PMKPromiseRejecter  DBAuthFail;
-    void                (^DBFileUploadHandler)(void);
+    void                (^DBFileUploadHandler)(NSString *);
     Screenshot          *screenshot;
 }
 
@@ -45,16 +45,39 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authHelperStateChangedNotification:) name:DBAuthHelperOSXStateChangedNotification object:[DBAuthHelperOSX sharedHelper]];
         
+        
+        
         [self authorize].then(^(NSData *data) {
             
             NSLog(@"YYYYMMDD file name: %@", [screenshot_ valueForKey:@"FileName" inDomain:@"Generic"]);
+            
+            NSManagedObjectContext *context = [screenshot_ valueForKey:@"Context" inDomain:@"DB"];
+            
+            DropBoxStorageItem *dbItem = [NSEntityDescription insertNewObjectForEntityForName:@"DropBoxStorageItem" inManagedObjectContext:context];
+            PrimaryStorageItem *primaryItem = (PrimaryStorageItem *)[screenshot_ valueForKey:@"PrimaryStorageItem" inDomain:@"DB"];
+            
+            if (!primaryItem) {
+                @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                                               reason:[NSString stringWithFormat:@"Can not retrieve primary item from Screenshot instance: %@", NSStringFromSelector(_cmd)]
+                                                             userInfo:nil];
+            }
             
             NSString    *fileName   = [screenshot_ valueForKey:@"FileName" inDomain:@"Generic"];
             NSString    *destDir    = [self->options valueForKey:@"Destination"];
             NSString    *tmpName    = [screenshot_ valueForKey:@"TmpName" inDomain:@"Generic"];
             
             [self.restClient uploadFile:fileName toPath:destDir withParentRev:nil fromPath:tmpName];
-            self->DBFileUploadHandler = ^{
+            self->DBFileUploadHandler = ^(NSString *dbURL){
+                
+                if (dbURL != NULL) {
+                    dbItem.url = dbURL;
+                    dbItem.status = [NSNumber numberWithInt:DROP_BOX_STATUS_OK];
+                } else {
+                    dbItem.status = [NSNumber numberWithInt:DROP_BOX_STATUS_FAILURE];
+                }
+                
+                primaryItem.dropbox_storage_item = dbItem;
+                
                 fulfill(screenshot_);
             };
         }).catch(^(NSError *error) {
@@ -99,7 +122,7 @@
 - (void)restClient:(DBRestClient *)client uploadFileFailedWithError:(NSError *)error {
     NSLog(@"File upload failed with error: %@", error);
     if (self->DBFileUploadHandler) {
-        self->DBFileUploadHandler();
+        self->DBFileUploadHandler(NULL);
     }
 }
 
@@ -107,7 +130,7 @@
     NSLog(@"Share url: %@", link);
     [self->screenshot setValue:link forKey:@"URL" inDomain:[self getDomain]];
     if (self->DBFileUploadHandler) {
-        self->DBFileUploadHandler();
+        self->DBFileUploadHandler(link);
     }
 }
 
@@ -116,7 +139,7 @@
     NSLog(@"Error %@", error);
     
     if (self->DBFileUploadHandler) {
-        self->DBFileUploadHandler();
+        self->DBFileUploadHandler(NULL);
     }
 }
 

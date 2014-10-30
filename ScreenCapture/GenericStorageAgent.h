@@ -29,6 +29,8 @@
 
 - (NSString *)generateFilenameYYYYMMDDHHIISS:(Screenshot *)screenshot;
 
+- (id)optionForKey:(NSString *)key;
+
 - (NSString *)getDomain;
 
 @end

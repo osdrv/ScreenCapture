@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "GenericStorageAgent.h"
 #import <DropboxOSX/DropboxOSX.h>
+#import "PrimaryStorageItem.h"
+#import "DropBoxStorageItem.h"
+
+#define DROP_BOX_STATUS_OK       1
+#define DROP_BOX_STATUS_FAILURE  0
 
 @interface DropBoxStorageAgent : GenericStorageAgent <DBRestClientDelegate>
 

@@ -22,6 +22,10 @@
     return self;
 }
 
+- (id)optionForKey:(NSString *)key {
+    return [self->options valueForKey:key];
+}
+
 - (BOOL) enabled {
     return self->enabled;
 }
@@ -55,6 +59,5 @@
 - (NSString *)getDomain {
     return NSStringFromClass([self class]);
 }
-
 
 @end

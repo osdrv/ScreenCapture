@@ -41,18 +41,32 @@
             
             NSLog(@"Response: %@, Status code: %i", responseString, [request responseStatusCode]);
             
+            NSManagedObjectContext *context = [screenshot valueForKey:@"Context" inDomain:@"DB"];
+            
+            RemoteRESTAPIStorageItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"RemoteRESTAPIStorageItem" inManagedObjectContext:context];
+            
             if ([request responseStatusCode] == 200) {
                 NSURL *resultURL = [[NSURL alloc] initWithScheme:scheme host:host path:responseString];
                 [screenshot setValue:[resultURL absoluteString] forKey:@"URL" inDomain:[self getDomain]];
                 NSLog(@"%@", resultURL);
+                
+                item.url = [resultURL absoluteString];
+                item.status = [NSNumber numberWithInt:REMOTE_REST_API_STATUS_OK];
             } else {
+                item.status = [NSNumber numberWithInt:REMOTE_REST_API_STATUS_FAILURE];
             }
+            
+            PrimaryStorageItem *primareStorageItem = (PrimaryStorageItem *)[screenshot valueForKey:@"PrimaryStorageItem" inDomain:@"DB"];
+            
+            primareStorageItem.remote_rest_api_storage_item = item;
+            
+            [screenshot setValue:item forKey:@"RemoteRESTAPIStorageItem" inDomain:@"DB"];
             
             fulfill(screenshot);
         }];
         
         [request setFailedBlock:^{
-            NSError *error = [request error];
+//            NSError *error = [request error];
             fulfill(screenshot);
         }];
         

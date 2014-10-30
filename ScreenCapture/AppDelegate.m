@@ -22,7 +22,6 @@
 @synthesize managedObjectContext = _managedObjectContext;
 
 const int FETCH_LIMIT           = 10;
-const int TAIL_ELEMENTS_LENGTH  = 2;
 
 - (IBAction)screenshotAction:(id)sender {
     [self makeScreenshot];
@@ -78,7 +77,6 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     [screenshotMenuItems removeAllObjects];
     
     NSArray *menuItems = [self.menu itemArray];
-    NSInteger count = [menuItems count];
     
     NSInteger anchorIndex = [self.menu indexOfItem:self.anchorMenuItem];
     
@@ -108,10 +106,6 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     [menuItem setSubmenu:subMenu];
     
     return menuItem;
-}
-
--(void)dummy:(id)sender {
-    NSLog(@"dummy!");
 }
 
 - (void)makeScreenshot {
@@ -160,6 +154,7 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    [self saveDBData];
 }
 
 - (void)initStorageManager {
@@ -190,6 +185,9 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     }
     
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    
+    NSLog(@"%@", [modelURL absoluteString]);
+    
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -221,6 +219,7 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     if (!shouldFail && !error) {
         NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
         NSURL *url = [applicationDocumentsDirectory URLByAppendingPathComponent:@"OSXCoreDataObjC.storedata"];
+        NSLog(@"%@", [url absoluteString]);
         if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
             coordinator = nil;
         }
@@ -235,7 +234,7 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
         if (error) {
             dict[NSUnderlyingErrorKey] = error;
         }
-        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+        error = [NSError errorWithDomain:@"ScreenCapture" code:9999 userInfo:dict];
         [[NSApplication sharedApplication] presentError:error];
     }
     return _persistentStoreCoordinator;

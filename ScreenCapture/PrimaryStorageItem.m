@@ -14,6 +14,7 @@
 
 @dynamic name;
 @dynamic date;
-@dynamic remote_rest_api_items;
+@dynamic remote_rest_api_storage_item;
+@dynamic dropbox_storage_item;
 
 @end

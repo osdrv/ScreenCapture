@@ -13,6 +13,6 @@
 
 @dynamic url;
 @dynamic status;
-@dynamic primary_storage_items;
+@dynamic primary_storage_item;
 
 @end
