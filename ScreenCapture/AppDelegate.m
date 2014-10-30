@@ -55,6 +55,8 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
 
 - (void)resetLastScreenshotList {
     
+    [self.menu setAutoenablesItems:YES];
+    
     // 1. load existing screenshots from DB
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"PrimaryStorageItem"];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
@@ -97,6 +99,7 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     
     NSArray *submenuItems = [storageManager buildMenuActionListViews:item];
     NSMenu *subMenu = [[NSMenu alloc] init];
+    [subMenu setAutoenablesItems:YES];
     
     for (NSMenuItem *subMenuItem in submenuItems) {
         [subMenu addItem:subMenuItem];
@@ -105,6 +108,10 @@ const int TAIL_ELEMENTS_LENGTH  = 2;
     [menuItem setSubmenu:subMenu];
     
     return menuItem;
+}
+
+-(void)dummy:(id)sender {
+    NSLog(@"dummy!");
 }
 
 - (void)makeScreenshot {

@@ -11,6 +11,14 @@
 
 @implementation LocalFileStorageAgent
 
+- (NSString *)filePathFor:(NSString *)fileName {
+    NSString *destinationFolder = [(NSString *)[self->options valueForKey:@"StorePath"] stringByStandardizingPath];
+    NSString *filePath = [[NSString stringWithFormat:@"%@/%@",
+                           destinationFolder,
+                           fileName] stringByStandardizingPath];
+    return filePath;
+}
+
 - (PMKPromise *)store:(Screenshot *)screenshot {
     
     NSLog(@"Storing file with LocalFile");
@@ -35,9 +43,10 @@
         
         NSString *yyyymmddName = [screenshot valueForKey:@"FileName" inDomain:@"Generic"];
         
-        NSString *fileName = [[NSString stringWithFormat:@"%@/%@",
-                              destinationFolder,
-                              yyyymmddName] stringByStandardizingPath];
+        NSString *fileName = [self filePathFor:yyyymmddName];
+//        [[NSString stringWithFormat:@"%@/%@",
+//                              destinationFolder,
+//                              yyyymmddName] stringByStandardizingPath];
         
         NSFileHandle *outputFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
         
@@ -76,7 +85,15 @@
 }
 
 - (AbstractStorageAgentViewBuilder *)getMenuItemViewBuilder {
-    return [[LocalFileMenuActionViewBuilder alloc] init];
+    return [[LocalFileMenuActionViewBuilder alloc] initWithStorageAgent:self];
+}
+
+- (void)revealInFinder:(id)sender {
+    PrimaryStorageItem *item = (PrimaryStorageItem *)[(NSMenuItem*)sender representedObject];
+    NSString *filePath = [self filePathFor:item.name];
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    NSArray *fileURLs = [NSArray arrayWithObjects:fileURL, nil];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
 }
 
 @end

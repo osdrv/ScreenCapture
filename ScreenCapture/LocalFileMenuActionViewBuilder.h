@@ -11,6 +11,7 @@
 #import <CoreData/NSManagedObject.h>
 #import "PrimaryStorageItem.h"
 #import "AbstractStorageAgentViewBuilder.h"
+#import "LocalFileStorageAgent.h"
 
 @interface LocalFileMenuActionViewBuilder : AbstractStorageAgentViewBuilder
 

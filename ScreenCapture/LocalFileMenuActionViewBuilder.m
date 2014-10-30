@@ -11,9 +11,11 @@
 @implementation LocalFileMenuActionViewBuilder
 
 - (NSMenuItem *)buildViewForManagedObject:(PrimaryStorageItem *)item {
-    NSMenuItem *menuItem = [[NSMenuItem alloc] init];
-    menuItem.title = @"Reveal in Finder";
-    
+
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Reveal in Finder" action:@selector(revealInFinder:) keyEquivalent:@""];
+    [menuItem setTarget:(LocalFileStorageAgent*)storageAgent];
+    [menuItem setRepresentedObject:item];
+
     return menuItem;
 }
 

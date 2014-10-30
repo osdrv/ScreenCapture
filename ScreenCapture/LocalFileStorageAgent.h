@@ -11,4 +11,6 @@
 
 @interface LocalFileStorageAgent : GenericStorageAgent
 
+- (void)revealInFinder:(id)sender;
+
 @end

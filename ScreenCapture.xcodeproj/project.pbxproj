@@ -144,6 +144,15 @@
 			name = StorageAgentViewBuilders;
 			sourceTree = "<group>";
 		};
+		5D3F23A21A0294A500C4E2E2 /* ViewBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */,
+				5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */,
+			);
+			name = ViewBuilder;
+			sourceTree = "<group>";
+		};
 		5D4937F119D82C7900008DFB = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +226,7 @@
 		5D49382319D8408600008DFB /* StorageAgents */ = {
 			isa = PBXGroup;
 			children = (
+				5D3F23A21A0294A500C4E2E2 /* ViewBuilder */,
 				5D11B4B919E1E70D00A07CDB /* DropBoxStorageAgent.h */,
 				5D11B4BA19E1E70D00A07CDB /* DropBoxStorageAgent.m */,
 				5D11B4AC19E18C4B00A07CDB /* GenericStorageAgent.h */,
@@ -231,8 +241,6 @@
 				5D11B4AA19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m */,
 				5D11B4AF19E1A7E600A07CDB /* SFTPStorageAgent.h */,
 				5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */,
-				5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */,
-				5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */,
 			);
 			name = StorageAgents;
 			sourceTree = "<group>";
