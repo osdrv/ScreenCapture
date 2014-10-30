@@ -11,6 +11,6 @@
 
 @interface LocalFileStorageAgent : GenericStorageAgent
 
-- (void)revealInFinder:(id)sender;
+- (NSString *)filePathFor:(NSString *)fileName;
 
 @end

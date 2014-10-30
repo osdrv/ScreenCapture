@@ -23,6 +23,7 @@
 		5D3F23981A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23971A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m */; };
 		5D3F239B1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F239A1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m */; };
 		5D3F23A11A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */; };
+		5D3F23A51A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3F23A41A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.m */; };
 		5D49380019D82C7A00008DFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4937FF19D82C7A00008DFB /* main.m */; };
 		5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D49380219D82C7A00008DFB /* AppDelegate.m */; };
 		5D49380519D82C7A00008DFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D49380419D82C7A00008DFB /* Images.xcassets */; };
@@ -76,6 +77,8 @@
 		5D3F239A1A026B4600C4E2E2 /* AbstractStorageAgentViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractStorageAgentViewBuilder.m; sourceTree = "<group>"; };
 		5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GenericStorageAgent+ViewBuilder.h"; sourceTree = "<group>"; };
 		5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GenericStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
+		5D3F23A31A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LocalFileStorageAgent+ViewBuilder.h"; sourceTree = "<group>"; };
+		5D3F23A41A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LocalFileStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
 		5D4937FA19D82C7A00008DFB /* ScreenCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D4937FE19D82C7A00008DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4937FF19D82C7A00008DFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 			children = (
 				5D3F239F1A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.h */,
 				5D3F23A01A02711900C4E2E2 /* GenericStorageAgent+ViewBuilder.m */,
+				5D3F23A31A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.h */,
+				5D3F23A41A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.m */,
 			);
 			name = ViewBuilder;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				5D11B4C119FD728E00A07CDB /* GoogleDriveStorageAgent.m in Sources */,
 				5D3F238D1A01931E00C4E2E2 /* RemoteRESTAPIStorageItem.m in Sources */,
 				5D11B4AB19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m in Sources */,
+				5D3F23A51A02A10000C4E2E2 /* LocalFileStorageAgent+ViewBuilder.m in Sources */,
 				5D3F23981A0266FF00C4E2E2 /* LocalFileMenuActionViewBuilder.m in Sources */,
 				5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */,
 				5D11B4AE19E18C4B00A07CDB /* GenericStorageAgent.m in Sources */,
