@@ -48,9 +48,11 @@
     
     for (NSString * className in options) {
         NSDictionary * agentOptions = [options valueForKey:className];
-        Class klass = NSClassFromString(className);
-        GenericStorageAgent *agent = [[klass alloc] initAgentWithOptions:agentOptions];
-        [self->storageAgents addObject:agent];
+        if ((BOOL)[agentOptions valueForKey:@"Enabled"]) {
+            Class klass = NSClassFromString(className);
+            GenericStorageAgent *agent = [[klass alloc] initAgentWithOptions:agentOptions];
+            [self->storageAgents addObject:agent];
+        }
     }
 }
 

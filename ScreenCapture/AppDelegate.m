@@ -76,8 +76,6 @@ const int FETCH_LIMIT           = 10;
     
     [screenshotMenuItems removeAllObjects];
     
-    NSArray *menuItems = [self.menu itemArray];
-    
     NSInteger anchorIndex = [self.menu indexOfItem:self.anchorMenuItem];
     
     // 4. insert new items in the menu
@@ -142,6 +140,7 @@ const int FETCH_LIMIT           = 10;
             [self storeFile:screenshot].then(^(NSData *data) {
                 [self saveDBData];
                 [self resetLastScreenshotList];
+                [self notifySyccessfullyUploaded:screenshot];
             });
         }
     }).catch(^(NSError *error) {
@@ -149,7 +148,21 @@ const int FETCH_LIMIT           = 10;
     });
 }
 
+- (void)notifySyccessfullyUploaded:(Screenshot *)screenshot {
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"File has been successfully uploaded";
+    notification.informativeText = @"ScreenCapture";
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification {
+    return YES;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
