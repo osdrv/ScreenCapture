@@ -19,10 +19,11 @@
 @implementation AppDelegate
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel         = _managedObjectModel;
+@synthesize managedObjectContext       = _managedObjectContext;
 
-const int FETCH_LIMIT           = 10;
+const int FETCH_LIMIT                  = 10;
+const int MAKE_SCREENSHOT_SHORTKEY_ID  = 1;
 
 - (IBAction)screenshotAction:(id)sender {
     [self makeScreenshot];
@@ -62,11 +63,10 @@ const int FETCH_LIMIT           = 10;
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind  = kEventHotKeyPressed;
 
-    
     InstallApplicationEventHandler(&OnHotKeyEvent, 1, &eventType, (__bridge void*)self, NULL);
     gMyHotKeyID.signature = 'htk1';
-    gMyHotKeyID.id        = 1;
-    RegisterEventHotKey(kVK_ANSI_5, cmdKey+controlKey, gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef);
+    gMyHotKeyID.id        = MAKE_SCREENSHOT_SHORTKEY_ID;
+    RegisterEventHotKey(kVK_ANSI_E, cmdKey + shiftKey, gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef);
 }
 
 OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *userData) {
@@ -77,7 +77,7 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
     AppDelegate *appDelegate = (__bridge AppDelegate *)userData;
     
     switch (hotkeyId) {
-        case 1:
+        case MAKE_SCREENSHOT_SHORTKEY_ID:
             [appDelegate makeScreenshot];
             break;
     }
@@ -317,7 +317,7 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
 
 - (void)showNotification:(NSString*)url {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    [notification setTitle:@"Upload finished"];
+    [notification setTitle:@"The share URL has been copied"];
     [notification setInformativeText: url];
     [notification setSoundName:NSUserNotificationDefaultSoundName];
     [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
