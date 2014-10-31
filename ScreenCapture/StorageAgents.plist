@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Integration</key>
+	<dict>
+		<key>PrincipalAgent</key>
+		<string>RemoteJSRESTAPIStorageAgent</string>
+	</dict>
 	<key>Agents</key>
 	<dict>
 		<key>LocalFileStorageAgent</key>
@@ -30,13 +35,30 @@
 			<key>HasMenuAction</key>
 			<true/>
 		</dict>
-    <key>DropBoxStorageAgent</key>
+		<key>DropBoxStorageAgent</key>
 		<dict>
 			<key>Destination</key>
 			<string>/Screenshots/</string>
 			<key>Enabled</key>
+			<false/>
+			<key>HasMenuAction</key>
 			<true/>
-      <key>HasMenuAction</key>
+		</dict>
+		<key>RemoteJSRESTAPIStorageAgent</key>
+		<dict>
+			<key>FileParamName</key>
+			<string>pasteImage</string>
+			<key>Method</key>
+			<string>POST</string>
+			<key>Path</key>
+			<string>/api</string>
+			<key>Scheme</key>
+			<string>https</string>
+			<key>Host</key>
+			<string></string>
+			<key>Enabled</key>
+			<true/>
+			<key>HasMenuAction</key>
 			<true/>
 		</dict>
 	</dict>

@@ -19,6 +19,7 @@
     if (self = [super init]) {
         NSDictionary * agents = [options valueForKey:@"Agents"];
         [self initAgentPoolWithOptions:agents];
+        self->principalAgent  = [[options valueForKey:@"Integration"] valueForKey:@"PrincipalAgent"];
     }
     
     return self;
@@ -67,6 +68,10 @@
     }
     
     return actionList;
+}
+
+- (NSString *)getPrincipalAgent {
+    return self->principalAgent;
 }
 
 @end

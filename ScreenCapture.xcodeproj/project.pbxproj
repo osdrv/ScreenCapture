@@ -37,6 +37,7 @@
 		5DF1472E1A02DAB70080538B /* DropBoxMenuActionViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1472D1A02DAB70080538B /* DropBoxMenuActionViewBuilder.m */; };
 		5DF147311A02DB6C0080538B /* DropBoxStorageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF147301A02DB6C0080538B /* DropBoxStorageItem.m */; };
 		5DF147341A02E1670080538B /* DropBoxStorageAgent+ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF147331A02E1670080538B /* DropBoxStorageAgent+ViewBuilder.m */; };
+		89B535B01A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		5DF147301A02DB6C0080538B /* DropBoxStorageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxStorageItem.m; sourceTree = "<group>"; };
 		5DF147321A02E1670080538B /* DropBoxStorageAgent+ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DropBoxStorageAgent+ViewBuilder.h"; sourceTree = "<group>"; };
 		5DF147331A02E1670080538B /* DropBoxStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DropBoxStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
+		89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteJSRESTAPIStorageAgent.m; sourceTree = "<group>"; };
+		89B535B11A03957600E414DD /* RemoteJSRESTAPIStorageAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoteJSRESTAPIStorageAgent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +272,8 @@
 				5D11B4BD19E4885500A07CDB /* PrimaryStorageAgent.m */,
 				5D11B4A919E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.h */,
 				5D11B4AA19E18BEA00A07CDB /* RemoteRESTAPIStorageAgent.m */,
+				89B535B11A03957600E414DD /* RemoteJSRESTAPIStorageAgent.h */,
+				89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */,
 				5D11B4AF19E1A7E600A07CDB /* SFTPStorageAgent.h */,
 				5D11B4B019E1A7E600A07CDB /* SFTPStorageAgent.m */,
 			);
@@ -432,6 +437,7 @@
 				5D49380319D82C7A00008DFB /* AppDelegate.m in Sources */,
 				5D11B4AE19E18C4B00A07CDB /* GenericStorageAgent.m in Sources */,
 				5D49380019D82C7A00008DFB /* main.m in Sources */,
+				89B535B01A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m in Sources */,
 				5DF147311A02DB6C0080538B /* DropBoxStorageItem.m in Sources */,
 				5D11B4B819E1C03C00A07CDB /* Screenshot.m in Sources */,
 				5D11B4B119E1A7E600A07CDB /* SFTPStorageAgent.m in Sources */,

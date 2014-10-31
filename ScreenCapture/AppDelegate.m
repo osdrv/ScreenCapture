@@ -141,6 +141,10 @@ const int FETCH_LIMIT           = 10;
                 [self saveDBData];
                 [self resetLastScreenshotList];
                 [self notifySyccessfullyUploaded:screenshot];
+                
+                NSString* url = [screenshot valueForKey:@"URL" inDomain: [self->storageManager getPrincipalAgent]];
+                [self saveToClipboard: url];
+                [self showNotification: url];
             });
         }
     }).catch(^(NSError *error) {
@@ -283,4 +287,17 @@ const int FETCH_LIMIT           = 10;
     NSLog(@"Done saving to the DB");
 }
 
+- (void)showNotification:(NSString*)url {
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    [notification setTitle:@"Upload finished"];
+    [notification setInformativeText: url];
+    [notification setSoundName:NSUserNotificationDefaultSoundName];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
+}
+
+- (void)saveToClipboard:(NSString*)url {
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard setString:url forType:NSStringPboardType];
+}
 @end

@@ -27,6 +27,8 @@
 - (IBAction)quitAction:(id)sender;
 
 - (void)saveDBData;
+- (void)showNotification:(NSString*)screenshot;
+- (void)saveToClipboard:(NSString*)url;
 
 @end
 

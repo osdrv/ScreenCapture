@@ -13,6 +13,7 @@
 
 @interface StorageManager : NSObject {
     NSMutableArray *storageAgents;
+    NSString *principalAgent;
 }
 
 - (id)initWithOptions:(NSDictionary *)options;
@@ -20,5 +21,7 @@
 - (PMKPromise *)store:(Screenshot *)screenshot;
 
 - (NSArray *)buildMenuActionListViews:(NSManagedObject *)managedObject;
+
+- (NSString *)getPrincipalAgent;
 
 @end
