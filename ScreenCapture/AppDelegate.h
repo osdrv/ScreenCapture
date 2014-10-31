@@ -13,6 +13,8 @@
     @protected
     StorageManager *storageManager;
     NSMutableArray *screenshotMenuItems;
+    NSImage *defaultMenuIcon;
+    NSImage *loadingMenuIcon;
 }
 
 @property (readwrite, retain) IBOutlet NSMenu *menu;
@@ -29,6 +31,7 @@
 - (void)saveDBData;
 - (void)showNotification:(NSString*)screenshot;
 - (void)saveToClipboard:(NSString*)url;
+- (void)registerGlobalHotKey;
 
 @end
 

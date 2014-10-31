@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Carbon/Carbon.h>
 #import <PromiseKit/NSTask+PromiseKit.h>
 #import "Screenshot.h"
 #import "PrimaryStorageItem.h"
@@ -42,15 +43,48 @@ const int FETCH_LIMIT           = 10;
 
 - (void)awakeFromNib {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    NSImage *menuIcon = [NSImage imageNamed:@"Menu icon"];
+    defaultMenuIcon        = [NSImage imageNamed:@"Menu icon"];
+    loadingMenuIcon        = [NSImage imageNamed:@"Loading icon"];
     NSImage *highlightIcon = [NSImage imageNamed:@"Menu icon"];
     [highlightIcon setTemplate:YES];
-    [[self statusItem] setImage:menuIcon];
+    [[self statusItem] setImage:defaultMenuIcon];
     [[self statusItem] setAlternateImage:highlightIcon];
     [[self statusItem] setMenu:[self menu]];
     [[self statusItem] setHighlightMode:YES];
     [self resetLastScreenshotList];
+    [self registerGlobalHotKey];
 }
+
+- (void)registerGlobalHotKey {
+    EventHotKeyRef gMyHotKeyRef;
+    EventHotKeyID  gMyHotKeyID;
+    EventTypeSpec  eventType;
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind  = kEventHotKeyPressed;
+
+    
+    InstallApplicationEventHandler(&OnHotKeyEvent, 1, &eventType, (__bridge void*)self, NULL);
+    gMyHotKeyID.signature = 'htk1';
+    gMyHotKeyID.id        = 1;
+    RegisterEventHotKey(kVK_ANSI_5, cmdKey+controlKey, gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef);
+}
+
+OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *userData) {
+    EventHotKeyID hkCom;
+    
+    GetEventParameter(theEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hkCom), NULL, &hkCom);
+    int hotkeyId = hkCom.id;
+    AppDelegate *appDelegate = (__bridge AppDelegate *)userData;
+    
+    switch (hotkeyId) {
+        case 1:
+            [appDelegate makeScreenshot];
+            break;
+    }
+    
+    return noErr;
+}
+
 
 - (void)resetLastScreenshotList {
     
@@ -113,6 +147,7 @@ const int FETCH_LIMIT           = 10;
     NSString *tmpFileTemplate = [NSString stringWithFormat:@"%@XXXXXX", tmpDir];
     NSString *fileName = [self mkTmpFileWithTmpl:tmpFileTemplate];
     
+
     NSArray *launchArguments = [NSArray arrayWithObjects:
                                 @"-x", // No sound
                                 @"-i", // Interactive mode: keyboard keys are supported
@@ -131,6 +166,8 @@ const int FETCH_LIMIT           = 10;
     [screenCapture promise].then(^(NSData *data) {
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:fileName];
         if (fileHandle != NULL) {
+            [[self statusItem] setImage:loadingMenuIcon];
+            
             Screenshot *screenshot = [[Screenshot alloc] init];
             [screenshot setValue:fileHandle
                           forKey:@"Handle" inDomain:@"Generic"];
@@ -143,6 +180,7 @@ const int FETCH_LIMIT           = 10;
                 NSString* url = [screenshot valueForKey:@"URL" inDomain: [self->storageManager getPrincipalAgent]];
                 [self saveToClipboard: url];
                 [self showNotification: url];
+                [[self statusItem] setImage:defaultMenuIcon];
             });
         }
     }).catch(^(NSError *error) {

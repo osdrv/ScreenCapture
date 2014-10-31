@@ -41,6 +41,7 @@
 		5DF1473A1A039E4B0080538B /* RemoteJSRESTAPIStorageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF147391A039E4B0080538B /* RemoteJSRESTAPIStorageItem.m */; };
 		5DF1473D1A03A2C00080538B /* RemoteJSRESTAPIStorageAgent+ViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1473C1A03A2C00080538B /* RemoteJSRESTAPIStorageAgent+ViewBuilder.m */; };
 		89B535B01A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */; };
+		89B535B31A039E8600E414DD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B535B21A039E8600E414DD /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		5DF1473C1A03A2C00080538B /* RemoteJSRESTAPIStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RemoteJSRESTAPIStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
 		89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteJSRESTAPIStorageAgent.m; sourceTree = "<group>"; };
 		89B535B11A03957600E414DD /* RemoteJSRESTAPIStorageAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoteJSRESTAPIStorageAgent.h; sourceTree = "<group>"; };
+		89B535B21A039E8600E414DD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B535B31A039E8600E414DD /* Carbon.framework in Frameworks */,
 				5D3F23581A0183EB00C4E2E2 /* CoreData.framework in Frameworks */,
 				18C983760F64E64C7FAE6C9D /* libPods-ScreenCapture.a in Frameworks */,
 			);
@@ -146,6 +149,7 @@
 		4F427519E70E06475497BA0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89B535B21A039E8600E414DD /* Carbon.framework */,
 				5D3F23571A0183EB00C4E2E2 /* CoreData.framework */,
 				1FC51128B0329A0EA0440369 /* libPods-ScreenCapture.a */,
 			);
