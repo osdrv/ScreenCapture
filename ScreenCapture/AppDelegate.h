@@ -13,6 +13,8 @@
     @protected
     StorageManager *storageManager;
     NSMutableArray *screenshotMenuItems;
+    NSImage *defaultMenuIcon;
+    NSImage *loadingMenuIcon;
 }
 
 @property (readwrite, retain) IBOutlet NSMenu *menu;

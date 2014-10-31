@@ -43,10 +43,11 @@ const int FETCH_LIMIT           = 10;
 
 - (void)awakeFromNib {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    NSImage *menuIcon = [NSImage imageNamed:@"Menu icon"];
+    defaultMenuIcon        = [NSImage imageNamed:@"Menu icon"];
+    loadingMenuIcon        = [NSImage imageNamed:@"Loading icon"];
     NSImage *highlightIcon = [NSImage imageNamed:@"Menu icon"];
     [highlightIcon setTemplate:YES];
-    [[self statusItem] setImage:menuIcon];
+    [[self statusItem] setImage:defaultMenuIcon];
     [[self statusItem] setAlternateImage:highlightIcon];
     [[self statusItem] setMenu:[self menu]];
     [[self statusItem] setHighlightMode:YES];
@@ -146,6 +147,7 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
     NSString *tmpFileTemplate = [NSString stringWithFormat:@"%@XXXXXX", tmpDir];
     NSString *fileName = [self mkTmpFileWithTmpl:tmpFileTemplate];
     
+
     NSArray *launchArguments = [NSArray arrayWithObjects:
                                 @"-x", // No sound
                                 @"-i", // Interactive mode: keyboard keys are supported
@@ -164,6 +166,8 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
     [screenCapture promise].then(^(NSData *data) {
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:fileName];
         if (fileHandle != NULL) {
+            [[self statusItem] setImage:loadingMenuIcon];
+            
             Screenshot *screenshot = [[Screenshot alloc] init];
             [screenshot setValue:fileHandle
                           forKey:@"Handle" inDomain:@"Generic"];
@@ -178,6 +182,7 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
                 NSString* url = [screenshot valueForKey:@"URL" inDomain: [self->storageManager getPrincipalAgent]];
                 [self saveToClipboard: url];
                 [self showNotification: url];
+                [[self statusItem] setImage:defaultMenuIcon];
             });
         }
     }).catch(^(NSError *error) {
