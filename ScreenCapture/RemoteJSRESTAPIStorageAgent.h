@@ -8,7 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "GenericStorageAgent.h"
+#import "RemoteJSRESTAPIStorageItem.h"
 
 @interface RemoteJSRESTAPIStorageAgent : GenericStorageAgent
+
+#define REMOTE_JS_REST_API_STATUS_OK       1
+#define REMOTE_JS_REST_API_STATUS_FAILURE  0
 
 @end

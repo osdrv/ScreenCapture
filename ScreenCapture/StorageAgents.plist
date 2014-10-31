@@ -31,7 +31,7 @@
 			<key>Host</key>
 			<string>i.4pcbr.com</string>
 			<key>Enabled</key>
-			<true/>
+			<false/>
 			<key>HasMenuAction</key>
 			<true/>
 		</dict>
@@ -60,6 +60,8 @@
 			<true/>
 			<key>HasMenuAction</key>
 			<true/>
+			<key>LabelHost</key>
+			<string></string>
 		</dict>
 	</dict>
 </dict>

@@ -140,8 +140,6 @@ const int FETCH_LIMIT           = 10;
             [self storeFile:screenshot].then(^(NSData *data) {
                 [self saveDBData];
                 [self resetLastScreenshotList];
-                [self notifySyccessfullyUploaded:screenshot];
-                
                 NSString* url = [screenshot valueForKey:@"URL" inDomain: [self->storageManager getPrincipalAgent]];
                 [self saveToClipboard: url];
                 [self showNotification: url];
@@ -150,14 +148,6 @@ const int FETCH_LIMIT           = 10;
     }).catch(^(NSError *error) {
         // @TODO: Handle screencapture error
     });
-}
-
-- (void)notifySyccessfullyUploaded:(Screenshot *)screenshot {
-    NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"File has been successfully uploaded";
-    notification.informativeText = @"ScreenCapture";
-    
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

@@ -41,6 +41,10 @@
             NSString *responseString = [request responseString];
             NSLog(@"Status code: %i", [request responseStatusCode]);
             
+            NSManagedObjectContext *context = [screenshot valueForKey:@"Context" inDomain:@"DB"];
+            
+            RemoteJSRESTAPIStorageItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"RemoteJSRESTAPIStorageItem" inManagedObjectContext:context];
+            
             
             if ([request responseStatusCode] == 200) {
                 NSError *error = nil;
@@ -50,10 +54,22 @@
 
                 NSURL *resultURL = [[NSURL alloc] initWithString:url];
                 
+                
+                
+                item.url = url;
+                item.status = [NSNumber numberWithInt:REMOTE_JS_REST_API_STATUS_OK];
+                
                 [screenshot setValue:[resultURL absoluteString] forKey:@"URL" inDomain:[self getDomain]];
                 NSLog(@"Result URL: %@", resultURL);
             } else {
+                item.status = [NSNumber numberWithInt:REMOTE_JS_REST_API_STATUS_FAILURE];
             }
+            
+            PrimaryStorageItem *primareStorageItem = (PrimaryStorageItem *)[screenshot valueForKey:@"PrimaryStorageItem" inDomain:@"DB"];
+            
+            primareStorageItem.remote_js_rest_api_storage_item = item;
+            
+            [screenshot setValue:item forKey:@"RemoteJSRESTAPIStorageItem" inDomain:@"DB"];
             
             fulfill(screenshot);
         }];
@@ -68,7 +84,4 @@
     }];
 }
 
-- (AbstractStorageAgentViewBuilder *)getMenuItemViewBuilder {
-    return [[LocalFileMenuActionViewBuilder alloc] init];
-}
 @end
