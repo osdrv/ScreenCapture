@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Carbon/Carbon.h>
 #import <PromiseKit/NSTask+PromiseKit.h>
 #import "Screenshot.h"
 #import "PrimaryStorageItem.h"
@@ -50,7 +51,39 @@ const int FETCH_LIMIT           = 10;
     [[self statusItem] setMenu:[self menu]];
     [[self statusItem] setHighlightMode:YES];
     [self resetLastScreenshotList];
+    [self registerGlobalHotKey];
 }
+
+- (void)registerGlobalHotKey {
+    EventHotKeyRef gMyHotKeyRef;
+    EventHotKeyID  gMyHotKeyID;
+    EventTypeSpec  eventType;
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind  = kEventHotKeyPressed;
+
+    
+    InstallApplicationEventHandler(&OnHotKeyEvent, 1, &eventType, (__bridge void*)self, NULL);
+    gMyHotKeyID.signature = 'htk1';
+    gMyHotKeyID.id        = 1;
+    RegisterEventHotKey(kVK_ANSI_5, cmdKey+controlKey, gMyHotKeyID, GetApplicationEventTarget(), 0, &gMyHotKeyRef);
+}
+
+OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *userData) {
+    EventHotKeyID hkCom;
+    
+    GetEventParameter(theEvent, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(hkCom), NULL, &hkCom);
+    int hotkeyId = hkCom.id;
+    AppDelegate *appDelegate = (__bridge AppDelegate *)userData;
+    
+    switch (hotkeyId) {
+        case 1:
+            [appDelegate makeScreenshot];
+            break;
+    }
+    
+    return noErr;
+}
+
 
 - (void)resetLastScreenshotList {
     

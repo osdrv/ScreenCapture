@@ -29,6 +29,7 @@
 - (void)saveDBData;
 - (void)showNotification:(NSString*)screenshot;
 - (void)saveToClipboard:(NSString*)url;
+- (void)registerGlobalHotKey;
 
 @end
 
