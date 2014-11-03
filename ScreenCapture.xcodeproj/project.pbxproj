@@ -120,6 +120,7 @@
 		5DF147391A039E4B0080538B /* RemoteJSRESTAPIStorageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteJSRESTAPIStorageItem.m; sourceTree = "<group>"; };
 		5DF1473B1A03A2C00080538B /* RemoteJSRESTAPIStorageAgent+ViewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RemoteJSRESTAPIStorageAgent+ViewBuilder.h"; sourceTree = "<group>"; };
 		5DF1473C1A03A2C00080538B /* RemoteJSRESTAPIStorageAgent+ViewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RemoteJSRESTAPIStorageAgent+ViewBuilder.m"; sourceTree = "<group>"; };
+		5DFD3C921A03CA240042B7C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		89B535AF1A03956800E414DD /* RemoteJSRESTAPIStorageAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteJSRESTAPIStorageAgent.m; sourceTree = "<group>"; };
 		89B535B11A03957600E414DD /* RemoteJSRESTAPIStorageAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoteJSRESTAPIStorageAgent.h; sourceTree = "<group>"; };
 		89B535B21A039E8600E414DD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -497,6 +498,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5D49380719D82C7A00008DFB /* Base */,
+				5DFD3C921A03CA240042B7C8 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScreenCapture/AppDelegate.m"
-            timestampString = "436448921.790019"
+            timestampString = "436451018.490421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-makeScreenshot"
             landmarkType = "5">
          </BreakpointContent>

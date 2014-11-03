@@ -146,7 +146,6 @@ OSStatus OnHotKeyEvent(EventHandlerCallRef nextHandler,EventRef theEvent,void *u
     NSString *tmpDir = NSTemporaryDirectory();
     NSString *tmpFileTemplate = [NSString stringWithFormat:@"%@XXXXXX", tmpDir];
     NSString *fileName = [self mkTmpFileWithTmpl:tmpFileTemplate];
-    
 
     NSArray *launchArguments = [NSArray arrayWithObjects:
                                 @"-x", // No sound
